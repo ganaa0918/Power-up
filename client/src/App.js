@@ -1,8 +1,5 @@
-// client/src/App.js
 
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
 
 function App() {
   const [data, setData] = React.useState(null);
@@ -14,11 +11,8 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div>
         <p>{!data ? "Loading..." : data}</p>
-      </header>
     </div>
   );
 }
