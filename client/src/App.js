@@ -1,6 +1,7 @@
 
 import React from "react";
-
+import Navbar from "./components/navbar/Navbar";
+import './app.css'
 function App() {
   const [data, setData] = React.useState(null);
 
@@ -12,7 +13,10 @@ function App() {
 
   return (
     <div>
-        <p>{!data ? "Loading..." : data}</p>
+      <div className="header">
+      <Navbar  />  
+      </div>
+        
     </div>
   );
 }
