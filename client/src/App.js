@@ -1,17 +1,21 @@
 
 import React from "react";
-import Navbar from "./components/navbar/Navbar";
 import './app.css'
-import HeaderImg from "./components/home";
+import { BrowserRouter, Route, Routes} from 'react-router-dom';
+import Home from "./router/home";
+import Navbars from "./components/navbar/Navbar";
 
 
 function App() {
   return (
-    <div>
-      <div className="header">
-      <Navbar  />  
-      <HeaderImg />
-      </div>
+    <div className="main">
+     
+      <BrowserRouter>
+      <Navbars />
+    <Routes>
+        <Route path="/" element={<Home />}/>
+    </Routes>
+    </BrowserRouter>
     </div>
   );
 }
