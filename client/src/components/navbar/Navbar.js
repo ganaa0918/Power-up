@@ -14,7 +14,7 @@ function Navbars() {
               width="70"
               height="70"
               className="d-inline-block align-top"
-              alt="React Bootstrap logo"
+              alt="React Bootstrap logo"              
             />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
