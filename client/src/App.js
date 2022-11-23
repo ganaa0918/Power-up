@@ -8,10 +8,8 @@ import Navbars from "./components/navbar/Navbar";
 
 function App() {
   return (
-    <div className="main">
-     
+    <div style={{height:"100vh"}} >
       <BrowserRouter>
-      <Navbars />
     <Routes>
         <Route path="/" element={<Home />}/>
     </Routes>
