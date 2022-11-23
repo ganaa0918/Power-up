@@ -5,8 +5,8 @@ import Images from '../images/logo1.png'
 function Navbars() {
   return (
     
-    <Navbar collapseOnSelect expand="lg" bg="transparent" variant="dark" fixed='top'>
-      <Container>
+    <Navbar collapseOnSelect expand="xl" bg="transparent" variant="dark" className='fixed-top' >
+      <Container >
         <Navbar.Brand href="/">
         <img
               src= {Images}
@@ -19,12 +19,12 @@ function Navbars() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/Blog">Blog</Nav.Link>
+            <Nav.Link className='text-light' href="/">PowerUP</Nav.Link>
+            <Nav.Link  className='text-light' href="/Blog">Blog</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link href="/register">Бүртгүүлэх</Nav.Link>
-            <Nav.Link eventKey={2} href="/Login">
+            <Nav.Link className='text-light' href="/register">Бүртгүүлэх</Nav.Link>
+            <Nav.Link  href="/Login" variant="warning" type='button' className="btn btn-warning btn-lg ms-3 text-dark" style={{borderRadius: "20px"}}>
               Нэвтрэх
             </Nav.Link>
           </Nav>
