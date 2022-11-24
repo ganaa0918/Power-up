@@ -1,6 +1,5 @@
 import React from 'react'
 import HeaderImg from '../components/home'
-import {Row, Col } from 'react-bootstrap'
 import Gym from '../image/gym.jpg'
 import Gym2 from '../image/girl1.jpg'
 import { Link } from 'react-router-dom'
@@ -12,36 +11,26 @@ function Home() {
       <div className='content'>
         <HeaderImg />
       </div>
-    <div className='container-fluid' style={{backgroundColor: "#212121"}} >
-      <Row>
-        <Col>
-          <img src={Gym} alt="Gym" width={"600px"} className="rounded mx-auto d-block mt-5"/>
-        </Col>
-        <Col className='text-white mt-5'>
-          <h1 className='text-center'>STORY ABOUT US</h1>
-          <p className='mt-3'>Lorem ipsum proin gravida nibh vel velit auctor aliquet. Aenean pretium sollicitudin, nascetur auci elit consequat ipsutissem niuis sed odio sit amet nibh vulputate cursus a amet.
-
-              Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, gravida quam semper libero sit amet. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, gravida quam semper libero sit amet.</p>
-
-          <Link to={'/'} className=' btn btn-grad' >Read more</Link>
-        </Col>
-      </Row>
+    <div class="grid grid-cols-1 md:grid-cols-2 sm:grid-cols-1 gap-6 " style={{backgroundColor: "#212121"}} >
+      <div class="mt-5">
+        <img src={Gym} alt=""  width={"800px"} className="rounded mx-auto d-block mt-2" />
+      </div>
+      <div class="mt-5">
+      <h1 className='text-center text-white'>STORY ABOUT US</h1>
+      <p className='mt-3 sm:text-center text-white'>Lorem ipsum proin gravida nibh vel velit auctor aliquet. Aenean pretium sollicitudin, nascetur auci elit consequat ipsutissem niuis sed odio sit amet nibh vulputate cursus a amet.</p>
+      <Link to={'/'} className=' btn btn-grad ms-5' >Read more</Link>
+      </div>
+      
     </div>
-    <div className='container-fluid'  style={{backgroundColor: "#212121"}}>
-      <Row >
-      <div class="column" style={{backgroundColor: "#aaa"}}>
-    <img src={Gym2} alt="girl" width={"100%"} height={"300px"} />
-  </div>
-  <div class="column" style={{backgroundColor: "#bbb"}}>
-    <h2>Column 2</h2>
-    <p>Some text..</p>
-  </div>
-  <div class="column" style={{backgroundColor: "#ccc"}}>
-    <h2>Column 3</h2>
-    <p>Some text..</p>
-  </div>
-      </Row>
+    <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-0 " style={{backgroundColor: "#212121"}} >
+      <div class="mt-5">
+        <img src={Gym2} alt="" />
+      </div>
+      <div class="bg-gray1 mt-5"></div>
+      <div class='bg-gray2 mt-5'></div>
     </div>
+
+
   </div>
 
 
