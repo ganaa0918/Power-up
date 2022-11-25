@@ -22,11 +22,11 @@ function Login() {
           <form className='mt-6' action="#" method='POST'>
             <div>
                 <label htmlFor="username" className='text-gray-800 block '> Username</label>
-                <input type="text" placeholder='Username'className='w-full  text-white focus:bg-gray-700 foucs:outline-none bg-gray-700 mt-2 border rounded-lg ' autoComplete autofocus required />
+                <input type="text" placeholder='Username'className='w-full  text-black focus:bg-white-700 focus:outline-black bg-white-700 mt-2 border rounded-lg ' autoComplete autofocus required />
             </div>
             <div className='mt-4'>
                 <label htmlFor="password">Password</label>
-                <input type="password" minLength={8} placeholder='password' name='' className='w-full text-white focus:bg-gray-700 foucs:outline-none bg-gray-700 mt-2 border rounded-lg' required/>
+                <input type="password" minLength={8} placeholder='password' name='' className='w-full text-black focus:bg-white-700 foucs:outline-black bg-white-700 mt-2 border rounded-lg' required/>
             </div>
             <div className='text-right mt-2'>
             <Link to={'#'} className=' text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700 focus:outline-none'>Forget Password</Link>

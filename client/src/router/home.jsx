@@ -26,8 +26,8 @@ function Home() {
       <div class="mt-5">
         <img src={Gym2} alt="" />
       </div>
-      <div class="bg-gray1 mt-5"></div>
-      <div class='bg-gray2 mt-5'></div>
+      <div class="bg-gray-400 mt-5"></div>
+      <div class='bg-gray-500 mt-5'></div>
     </div>
 
 

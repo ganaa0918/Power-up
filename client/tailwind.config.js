@@ -4,10 +4,10 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    colors:{
-      gray1: '#a5a5a5',
-      gray2: '#313136',
-    },
+    // colors:{
+    //   gray1: '#a5a5a5',
+    //   gray2: '#313136',
+    // },
     extend: {},
   },
   plugins: [],
