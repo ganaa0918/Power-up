@@ -6,7 +6,7 @@ import img2 from '../images/backgroundimg.jpg'
 function HeaderImg() {
   return (
    <div className='head-tex'>
-   <Navbars />
+   <Navbars color="dark" />
    <div className='head-image'>
    <img src={img2} alt="Snow"  height={800} style={{width: "100%",backgroundSize:"cover"}}/>
    </div>

@@ -4,10 +4,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import Images from '../images/logo1.png'
 
 
-function Navbars() {
+function Navbars(props) {
+  const color = props.color;
   return (
     
-    <Navbar collapseOnSelect expand="xl" bg="transparent" variant="dark" className='fixed-top' >
+    <Navbar collapseOnSelect expand="xl" bg="transparent" variant={color} className='fixed-top' >
       <Container >
         <Navbar.Brand href="/">
         <img
@@ -21,11 +22,11 @@ function Navbars() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link className='text-light' href="/">PowerUP</Nav.Link>
-            <Nav.Link  className='text-light' href="/Blog">Blog</Nav.Link>
+            <Nav.Link  href="/">PowerUP</Nav.Link>
+            <Nav.Link   href="/Blog">Blog</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link className='text-light' href="/register">Бүртгүүлэх</Nav.Link>
+            <Nav.Link  href="/register">Бүртгүүлэх</Nav.Link>
             <Nav.Link  href="/Login" variant="warning" type='button' className="btn btn-warning btn-lg ms-3 text-dark" style={{borderRadius: "20px"}}>
               Нэвтрэх
             </Nav.Link>
