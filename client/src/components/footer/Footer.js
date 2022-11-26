@@ -19,7 +19,7 @@ const Footer = () => {
         </div>
         <div className="d-flex justify-content-start align-items-center">
         <MdLocalPostOffice />
-          <span className="me-3 ms-2"> 99888899, 88999988</span>
+          <span className="me-3 ms-2"> fitness88@gmail.com</span>
         </div>
       </section>
     </div> 
