@@ -8,7 +8,7 @@ function HeaderImg() {
    <div className='head-tex'>
    <Navbars color="dark" />
    <div className='head-image'>
-   <img src={img2} alt="Snow"  height={800} style={{width: "100%",backgroundSize:"cover"}}/>
+   <img src={img2} alt="Snow" className='w-max h-auto'/>
    </div>
   </div>
   )
