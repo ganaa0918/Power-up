@@ -9,36 +9,36 @@ function Register() {
             <div className="d-flex justify-center align-items-lg-center" style={{paddingTop:"100px"}}>
                 <form>
                     <h1>Бүртгүүлэх</h1>
-                    <div class="form-group mt-3">
+                    <div className="form-group mt-3">
                      <label>Нэр</label>
-                     <input class="form-control" type="text" placeholder="Та нэрээ оруулна уу"/>
+                     <input className="form-control" type="text" placeholder="Та нэрээ оруулна уу"/>
                      </div>
                      <div className='mt-3 form-group'>
                      <label>Овог</label>
-                     <input class="form-control" type="text" placeholder="Та овог оруулна уу"/>
+                     <input className="form-control" type="text" placeholder="Та овог оруулна уу"/>
                      </div>
                      <div className='mt-3 form-group'>
                      <label>Гар утас</label>
-                     <input class="form-control" type="text" placeholder="Утасны дугаару"/>
+                     <input className="form-control" type="text" placeholder="Утасны дугаару"/>
                      </div>
                      <div className='mt-3 form-group'>
                      <label>Password</label>
-                     <input class="form-control" type="password" placeholder="Та password хийнэ үү"/>
+                     <input className="form-control" type="password" placeholder="Та password хийнэ үү"/>
                      </div>
                      <div className='mt-3 form-group'>
                      <label>Re-Password</label>
-                     <input class="form-control" type="password" placeholder="Та password дахин хийнэ үү"/>
+                     <input className="form-control" type="password" placeholder="Та password дахин хийнэ үү"/>
                      </div>
                      <div className='mt-3 form-group'>
-                     <input type="radio" id="Purple" name="colors" value="Yellow"></input>
+                     <input type="radio" className="Purple" name="colors" value="Yellow"></input>
                      <label className='radio ms-2'> Эр </label>
                      </div>
                      <div className='mt-3 form-group'>
-                     <input type="radio" id="Purple" name="colors" value="Yellow"></input>
+                     <input type="radio" className="Purple" name="colors" value="Yellow"></input>
                      <label className='radio ms-2'> Эм </label>
                      </div>
                      <div className='mt-3 form-group'>
-                     <input type="checkbox" id="Purple" name="colors" value="Yellow"></input>
+                     <input type="checkbox" className="Purple" name="colors" value="Yellow"></input>
                      <label className='radio ms-2'> Remember me </label>
                      </div>
                      <div className='d-flex justify-between mt-3'>

@@ -15,8 +15,8 @@ function Sidebar() {
     <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
     <CDBSidebar textColor="#fff" backgroundColor="#2C2C2C">
       <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large flex"></i>}>
-      <span class="d-inline">PowerUP
-        <span class="d-inline btn float-right">
+      <span className="d-inline">PowerUP
+        <span className="d-inline btn float-right">
             <img src={Images} alt="ss"></img>
         </span>
        </span>

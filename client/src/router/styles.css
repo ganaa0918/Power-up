@@ -14,9 +14,9 @@
   }
 
 
-input[type=radio]#Purple {
+input[type=radio].Purple {
   accent-color: #7A5CFA;
 }
-input[type=checkbox]#Purple {
+input[type=checkbox].Purple {
   accent-color: #7A5CFA;
 }
