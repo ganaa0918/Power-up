@@ -23,11 +23,11 @@ function Register() {
                      </div>
                      <div className='mt-3 form-group'>
                      <label>Password</label>
-                     <input className="form-control" type="password" placeholder="Та password хийнэ үү"/>
+                     <input className="form-control" type="password" placeholder="Та password хийнэ үү" autoComplete='on'/>
                      </div>
                      <div className='mt-3 form-group'>
                      <label>Re-Password</label>
-                     <input className="form-control" type="password" placeholder="Та password дахин хийнэ үү"/>
+                     <input className="form-control" type="password" placeholder="Та password дахин хийнэ үү" autoComplete='on'/>
                      </div>
                      <div className='mt-3 form-group'>
                      <input type="radio" className="Purple" name="colors" value="Yellow"></input>
