@@ -6,7 +6,7 @@ import  './styles.css'
 
 const Footer = () => {
   return (
-    <footer className="text-center text-white sticky-bottom img" style={{backgroundColor: "#212121"}}>
+    <footer className="text-center text-white  img" style={{backgroundColor: "#212121"}}>
     <div className="container-fluid">
     <section className="mt-2">
         <div className="d-flex justify-content-start align-items-center">
