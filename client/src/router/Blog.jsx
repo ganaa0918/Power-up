@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from '../components/footer/Footer'
 import Navbars from '../components/navbar/Navbar'
 import Blog1 from '../image/blog1.png'
 import Blog2 from '../image/blog2.png'
@@ -21,6 +22,10 @@ function Blog() {
                 </div>
             </div>
         </div>
+        <footer style={{bottom: 0, right: 0 , left: 0 ,position:"absolute"}}>
+        <Footer  />
+        </footer>
+       
     </div>
   )
 }
