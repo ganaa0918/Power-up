@@ -1,9 +1,8 @@
 
 import React from 'react'
 import {  useState } from 'react';
-import Loginimg from '../image/login.png'
-import Loginim2 from '../image/logo1.png'
-import {Link, useNavigate} from 'react-router-dom'
+import Loginim3 from '../image/loginsss.jpg'
+import {Link , useNavigate} from 'react-router-dom'
 import './styles.css'
 
 
@@ -21,14 +20,10 @@ function Login() {
     }
     ).then(data => data.json()).then(data => {
       
-      if (data == "Хэрэглэгч") { 
-        alert("амжилттай нэвтэрлээ");
+      if(data == "Хэрэглэгч") {
+      alert("амжилттай нэвтэрлээ");
         navigate("/user");
         
-      }
-      else if ( data == "Багш") { 
-        alert("амжилттай нэвтэрлээ");
-
       } 
       else if (data == "admin") { 
         alert("амжилттай нэвтэрлээ");
@@ -44,11 +39,7 @@ function Login() {
   return (
     <section className='flex flex-col md:flex-row h-screen  items-center'>
       <div className=' relative flex bg-blue-800 hidden h-screen md:w-1/2 xl:w-2/3 h-screen lg:block'>
-        <img src={Loginimg} className="w-full h-full object-cover" alt="logimimg" />
-        <div className='absolute k'>
-        <img src={Loginim2} alt="loginimg2" className=''/>
-        <h1 className='text-center text-white text-6xl'>Power UP</h1>
-      </div>
+        <img src={Loginim3} className="w-full h-full object-cover" alt="logimimg" />
       </div>
       
       <div className='bg-white items-center justify-center flex md:mx-auto md:mx-0 w-full md:w-1/2 xl:w-1/3 px-6 lg:px-16 xl:px-12'>
