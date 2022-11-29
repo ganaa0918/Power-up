@@ -3,14 +3,14 @@ import React from 'react'
 import {  useState } from 'react';
 import Loginimg from '../image/login.png'
 import Loginim2 from '../image/logo1.png'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import './styles.css'
 
 
 function Login() {
   const [ Uname , setUName ] = useState('');
-  const [pass , setPass ] = useState(0);
-
+  const [pass , setPass ] = useState();
+  const navigate = useNavigate();
   const handleClick = () => { 
     fetch('http://localhost:3001/Login' , 
     {
@@ -20,12 +20,22 @@ function Login() {
       
     }
     ).then(data => data.json()).then(data => {
-      alert(data);
       
       if (data == "Хэрэглэгч") { 
-        alert("amjilttai newterlee");
+        alert("амжилттай нэвтэрлээ");
+        navigate("/user");
         
+      }
+      else if ( data == "Багш") { 
+        alert("амжилттай нэвтэрлээ");
+
       } 
+      else if (data == "admin") { 
+        alert("амжилттай нэвтэрлээ");
+      }
+      else { 
+        alert("амжилтгүй");
+      }
      
     }).catch(error => { alert("Aldaa garlaa ");})
 
