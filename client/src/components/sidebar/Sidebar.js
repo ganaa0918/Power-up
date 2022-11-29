@@ -24,19 +24,19 @@ function Sidebar() {
 
       <CDBSidebarContent className="sidebar-content">
         <CDBSidebarMenu>
-          <NavLink exact to="/profile" activeClassName="activeClicked">
+          <NavLink exact to="/profile" className="bg">
             <CDBSidebarMenuItem icon="home">Миний профайл</CDBSidebarMenuItem>
           </NavLink>
-          <NavLink exact to="/jagsaalt" activeClassName="activeClicked">
+          <NavLink exact to="/jagsaalt" className="bg">
             <CDBSidebarMenuItem icon="table">Захиалгын жагсаалт</CDBSidebarMenuItem>
           </NavLink>
-          <NavLink exact to="/huwaari" activeClassName="activeClicked">
+          <NavLink exact to="/huwaari" className="bg">
             <CDBSidebarMenuItem icon="clock">Хувиар харах</CDBSidebarMenuItem>
           </NavLink>
-          <NavLink exact to="/infous" activeClassName="activeClicked">
+          <NavLink exact to="/infous" className="bg">
             <CDBSidebarMenuItem icon="hospital">Байгууллагын мэдээлэл</CDBSidebarMenuItem>
           </NavLink>
-          <NavLink exact to="/teacherinfo" activeClassName="activeClicked">
+          <NavLink exact to="/teacherinfo" className="bg">
             <CDBSidebarMenuItem icon="school">Багшийн мэдээлэл</CDBSidebarMenuItem>
           </NavLink>
           
@@ -52,7 +52,7 @@ function Sidebar() {
             }}
         
           >
-            <NavLink exact to="/" activeClassName="activeClicked">
+            <NavLink exact to="/" className="bg">
             <CDBSidebarMenuItem icon="arrow-left" className="text-white">Exit</CDBSidebarMenuItem>
           </NavLink>
         </div>

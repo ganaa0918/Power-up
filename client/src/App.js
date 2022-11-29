@@ -8,6 +8,7 @@ import User from "./router/User";
 import Register from "./router/Register";
 import Blog from "./router/Blog";
 import Profile from "./router/User/Profile";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/User" element={<User />}/>
         <Route path="/profile" element={<Profile />}/>
     </Routes>
+    <ToastContainer />
     </BrowserRouter>
     </div>
   );

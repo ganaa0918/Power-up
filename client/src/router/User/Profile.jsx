@@ -1,10 +1,8 @@
 import React from 'react'
 import Sidebar from '../../components/sidebar/Sidebar'
-import {toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
-const notif = () => [
-    toast.success('ss')
-]
 
 function Profile() {
   return (
@@ -27,10 +25,10 @@ function Profile() {
                      </div> 
                      <div className='mt-3 form-group'>
                      <label>Гар утас</label>
-                     <input className="form-control" type="text" placeholder="Утасны дугаару"/>
+                     <input className="form-control" type="number" placeholder="Утасны дугаару"/>
                      </div>
                      <div className='d-flex justify-center mt-3'>
-                        <button className='btn' type='submit' style={{backgroundColor: "#7A5CFA", color: "white"}} onClick={notif}>Засах</button>
+                        <button className='btn' style={{backgroundColor: "#7A5CFA", color: "white"}}>Засах</button>
                      </div>
                 </form>
                 </div>
