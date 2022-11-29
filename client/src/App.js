@@ -7,6 +7,7 @@ import Login from "./router/Login";
 import User from "./router/User";
 import Register from "./router/Register";
 import Blog from "./router/Blog";
+import Profile from "./router/User/Profile";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/Blog" element={<Blog />}/>
         <Route path="/register" element={<Register />}/>
         <Route path="/User" element={<User />}/>
+        <Route path="/profile" element={<Profile />}/>
     </Routes>
     </BrowserRouter>
     </div>
