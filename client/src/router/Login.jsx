@@ -48,7 +48,7 @@ function Login() {
           <form className='mt-6' action="#" method='POST'>
             <div>
                 <label htmlFor="username" className='text-gray-800 block ' > Username</label>
-                <input type="text" placeholder='Username'className='w-full  text-black focus:bg-white-700 focus:outline-black bg-white-700 mt-2 border rounded-lg ' value = {Uname}  onChange = {e => setUName(e.target.value)} autoComplete='true' autoFocus required  />
+                <input type="text" placeholder='Username' name='Username' className='w-full   text-black focus:bg-white-700 focus:outline-black bg-white-700 mt-2 border rounded-lg ' value = {Uname}  onChange = {e => setUName(e.target.value)} autoComplete='true' autoFocus required  />
             </div>
             <div className='mt-4'>
                 <label htmlFor="password">Password</label>

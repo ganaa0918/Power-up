@@ -27,7 +27,7 @@ function Sidebar() {
           <NavLink exact to="/profile" className="bg">
             <CDBSidebarMenuItem icon="home">Миний профайл</CDBSidebarMenuItem>
           </NavLink>
-          <NavLink exact to="/jagsaalt" className="bg">
+          <NavLink exact to="/zahialga" className="bg">
             <CDBSidebarMenuItem icon="table">Захиалгын жагсаалт</CDBSidebarMenuItem>
           </NavLink>
           <NavLink exact to="/huwaari" className="bg">
