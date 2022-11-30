@@ -1,6 +1,7 @@
 import React from 'react'
 import Sidebar from '../../components/sidebar/Sidebar'
 import DataTable from 'react-data-table-component';
+import {Link} from 'react-router-dom'
 
 const columns = [
     {
@@ -52,7 +53,7 @@ function Zahialga() {
                 }
                 />
                 <div style={{paddingTop:"100px",justifyContent:"center"}} className="d-flex" >
-                <button className='btn' style={{backgroundColor: "#7A5CFA", color: "white"}}>Захиалга хийх</button>
+                <Link to={'/zahialga/zahialga_hiih'} className='btn' style={{backgroundColor: "#7A5CFA", color: "white"}}>Захиалга хийх</Link>
                 </div>
                 </div>
                 

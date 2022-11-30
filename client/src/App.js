@@ -10,6 +10,7 @@ import Blog from "./router/Blog";
 import Profile from "./router/User/Profile";
 import { ToastContainer } from "react-toastify";
 import Zahialga from "./router/User/Zahialga";
+import Zhiih from "./router/User/Zhiih";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/User" element={<User />}/>
         <Route path="/profile" element={<Profile />}/>
         <Route path="/zahialga" element={<Zahialga />}/>
+        <Route path="/zahialga/zahialga_hiih" element={<Zhiih />}/>
     </Routes>
     <ToastContainer />
     </BrowserRouter>
