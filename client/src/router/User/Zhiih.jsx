@@ -1,7 +1,21 @@
 import React from 'react'
 import Sidebar from '../../components/sidebar/Sidebar'
+import { useForm } from "react-hook-form";
+import useToast from '../../hooks/useToast';
+
 
 function Zhiih() {
+    const { addToast } = useToast()
+    const { register, handleSubmit, formState: { errors }, } = useForm();
+    const onSubmit = data => {
+      addToast(
+        {
+            text: 'Захиалга амжилттай хиигдлээ',
+            theme: "light",
+            type: 'success',
+        }
+    )
+    };
   return (
     <div>
        <div className='flex'>
@@ -10,7 +24,7 @@ function Zhiih() {
                     <div className='d-flex justify-center'>
                         <h1>Захиалгын хэсэг</h1>
                     </div>
-
+                <form className='w-96 ms-5 ' method='POST'>
                     <div class="flex justify-center mt-4">
                     <div class="mb-3 xl:w-96">
                         <select class="form-select appearance-none
@@ -54,7 +68,7 @@ function Zhiih() {
                         transition
                         ease-in-out
                         m-0
-                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example" >
                             <option selected> Цагийн хувиар сонгоно уу</option>
                             <option value="1">2 дахь өдөр 19-21 цаг  , 3 дахад 17-19..</option>
                             <option value="2">Two</option>
@@ -105,8 +119,9 @@ function Zhiih() {
                         </div>
                     </div>
                     <div class="flex justify-center mt-1">
-                    <button  className='btn' style={{backgroundColor: "#7A5CFA", color: "white"}}>Захиалах</button>
+                    <button  className='btn' style={{backgroundColor: "#7A5CFA", color: "white"}} onClick={handleSubmit(onSubmit)}  >Захиалах</button>
                     </div>
+                    </form>
                 </div>
         </div>
     </div>
