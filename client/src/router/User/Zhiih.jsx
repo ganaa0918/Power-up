@@ -105,7 +105,7 @@ function Zhiih() {
                         </div>
                     </div>
                     <div class="flex justify-center mt-1">
-                    <button  className='btn' style={{backgroundColor: "#7A5CFA", color: "white"}}>Захиалга хийх</button>
+                    <button  className='btn' style={{backgroundColor: "#7A5CFA", color: "white"}}>Захиалах</button>
                     </div>
                 </div>
         </div>
