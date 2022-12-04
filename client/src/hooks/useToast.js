@@ -8,7 +8,7 @@
      toast(text, {
        position: toast.POSITION.TOP_RIGHT,
        type: type || "success",
-       theme: theme || "light"
+       theme: theme || "colored"
      });
    };
 
