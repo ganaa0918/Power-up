@@ -2,16 +2,24 @@ import {React, useState} from 'react'
 import Sidebar from '../../components/sidebar/Sidebar'
 import { FiEye } from 'react-icons/fi';
 import { useForm } from "react-hook-form";
-// import { FiEyeOff } from 'react-icons/fi';
+import useToast from '../../hooks/useToast';
+
 
 function Profile() {
+  const { addToast } = useToast()
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
   };
   const { register, handleSubmit, formState: { errors }, } = useForm();
   const onSubmit = data => {
-    // console.log(data);
+    addToast(
+      {
+          text: 'Амжилттай хадгалагдлаа',
+          theme: "light",
+          type: 'warning',
+      }
+  )
   };
 
  
@@ -97,9 +105,7 @@ function Profile() {
                      </div>
                 </form>
                 </div>
-                
         </div>
-        
     </div>
   )
 }
