@@ -15,6 +15,7 @@ import Huwaari from "./router/User/Huwaari";
 import Huvaari from "./router/Teacher/Huvaari";
 import AddSchedule from "./router/Teacher/AddSchedule";
 import Teacher from "./router/Teacher";
+import Admin from "./router/Admin";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="teacherhuvaari" element={<Huvaari />}/>
         <Route path="/techaerhuvaari/huvaarinemeh" element={<AddSchedule />}/>
         <Route path="/teacher" element={<Teacher />}/>
+        <Route path="/admin" element={<Admin />}/>
     </Routes>
     <ToastContainer />
     </BrowserRouter>
