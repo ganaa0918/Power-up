@@ -6,7 +6,7 @@ import useToast from '../../hooks/useToast';
 
 function Zhiih() {
     const { addToast } = useToast()
-    const { register, handleSubmit, formState: { errors }, } = useForm();
+    const {  handleSubmit } = useForm();
     const onSubmit = data => {
       addToast(
         {
