@@ -1,7 +1,4 @@
 import React from 'react'
-import Highcharts from 'highcharts'
-import HighchartsReact from 'highcharts-react-official'
-import Configobj from './chartdata';
 import Sidebar from '../../components/sidebar/Sidebar';
 import DataTable from 'react-data-table-component';
 function Huwaari() {
@@ -34,12 +31,7 @@ const data = [
      <div className='flex'>
      <Sidebar />
      <div className='container'style={{paddingTop:"100px",}}>
-        <div className='mb-2'>
-      <HighchartsReact
-      highcharts={Highcharts}
-      options={Configobj}
-        />
-      </div>
+        
       <div> <DataTable
                 title="Захиалгын түүх"
                 columns={columns}
