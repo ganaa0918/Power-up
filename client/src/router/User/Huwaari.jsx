@@ -31,7 +31,70 @@ const data = [
      <div className='flex'>
      <Sidebar />
      <div className='container'style={{paddingTop:"100px",}}>
-        
+        <div>
+        <table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Цөг</th>
+      <th scope="col">Даваа </th>
+      <th scope="col">Мягмар </th>
+      <th scope="col">Лхагва </th>
+      <th scope="col">Пүрэв гараг</th>
+      <th scope="col">Баасан гараг	</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">8:00-10:00</th>
+      <td>Body</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">10:00-12:00</th>
+      <td></td>
+      <td>body</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">12:00-14:00</th>
+      <td></td>
+      <td></td>
+      <td>body</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">16:00-18:00</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">18:00-20:00</th>
+      <td></td>
+      <td></td>
+      <td>body</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">20:00-22:00</th>
+      <td></td>
+      <td></td>
+      <td>body</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+        </div>
       <div> <DataTable
                 title="Захиалгын түүх"
                 columns={columns}
