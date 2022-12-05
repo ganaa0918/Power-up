@@ -16,7 +16,9 @@ import Huvaari from "./router/Teacher/Huvaari";
 import AddSchedule from "./router/Teacher/AddSchedule";
 import Teacher from "./router/Teacher";
 import Admin from "./router/Admin";
-
+import TeacherInfo from "./router/Admin/TeacherInfo";
+import UserInfo from "./router/Admin/UserInfo";
+import ZahialgaInfo from "./router/Admin/ZahialgaInfo";
 function App() {
   return (
     <div style={{height:"100vh"}} >
@@ -35,6 +37,9 @@ function App() {
         <Route path="/techaerhuvaari/huvaarinemeh" element={<AddSchedule />}/>
         <Route path="/teacher" element={<Teacher />}/>
         <Route path="/admin" element={<Admin />}/>
+        <Route path="/teacher_info" element={<TeacherInfo />}/>
+        <Route path="/user_info" element={<UserInfo />}/>
+        <Route path="/zahialga_info" element={<ZahialgaInfo />}/>
     </Routes>
     <ToastContainer />
     </BrowserRouter>
