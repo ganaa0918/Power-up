@@ -1,24 +1,45 @@
 import React from 'react'
+import { useEffect, useState } from 'react';
 import DataTable from 'react-data-table-component';
 import SidebarAdmin from '../../components/sidebar/SidebarAdmin';
 
 
-function ZahialgaInfo() {
-  const columns = [
-    {
-        name: 'Name',
-        selector: row => row.name,
-    },
-    {
-        name: 'Өдөр',
-        selector: row => row.day,
-    },
-    {
-        name: 'Цаг',
-        selector: row => row.status,
-    },
-];
+const handleButtonClick = () => {
+		
+  console.log('clicked');
+};
 
+function ZahialgaInfo() {
+  const [columns, setColumns] = useState([]);
+	const [pending, setPending] = React.useState(true);
+  useEffect(()=>{
+    const timeout = setTimeout(()=>{
+      setColumns([
+        {
+          name: 'Name',
+          selector: row => row.name,
+      },
+      {
+          name: 'Өдөр',
+          selector: row => row.day,
+      },
+      {
+          name: 'Цаг',
+          selector: row => row.status,
+      },
+      {
+				
+				cell: () => <button onClick={handleButtonClick} >Устгах</button>,
+				ignoreRowClick: true,
+				allowOverflow: true,
+				button: true,
+			},
+      ])
+      setPending(false);
+		}, 2000);
+		return () => clearTimeout(timeout);
+  },[])
+  
 const data = [
   {
       id: 1,
@@ -46,6 +67,7 @@ const data = [
                   paginationComponentOptions={
                       {rowsPerPageText: 'Хуудасны тоо:'}
                   }
+                  progressPending={pending}
                   /></div>
       </div>
       </div>
