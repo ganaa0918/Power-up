@@ -15,7 +15,7 @@ function Blog() {
                     <div className='relative '>
                     <img src={Blog1} alt="blog1" />
                     <div className='absolute bottom-20 left-20 text-white'>
-                        <Link to={'#'}  className="no-underline text-white">Яагаад Иогоор хичээллэх хэрэгтэй вэ</Link>
+                        <Link to={'/blog1'}  className="no-underline text-white">Яагаад Иогоор хичээллэх хэрэгтэй вэ</Link>
                         </div>
                     </div>
                 </div>
@@ -23,7 +23,7 @@ function Blog() {
                     <div className='relative'>
                     <img src={Blog2} alt="blog1" />
                     <div className='absolute bottom-10 left-10 text-white'>
-                         <Link to={'#'} className="no-underline text-white">Өглөөний цайнаас өмнө хүүхэд болгонд өгөх хэрэгтэй 4 зүйлс </Link>
+                         <Link to={'/blog2'} className="no-underline text-white">ӨГЛӨӨНИЙ ЦАЙ ЯАГААД ЧУХАЛ ВЭ? </Link>
                     </div>
                     </div>
                 </div>
@@ -31,7 +31,7 @@ function Blog() {
                     <div className='relative'>
                     <img src={Blog3} alt="blog1" />
                     <div className='absolute bottom-10 left-10'>
-                        <Link to={'#'} className="no-underline text-white">ХӨДӨЛГӨӨН <br/> 50 гарсан ч фит биетэй болж болно: Эрчүүдэд өгөх 5 зөвлөмж</Link>
+                        <Link to={'/blog3'} className="no-underline text-white">ХӨДӨЛГӨӨН <br/> 50 гарсан ч фит биетэй болж болно: Эрчүүдэд өгөх 5 зөвлөмж</Link>
                     </div>
                 </div>
                 </div>
