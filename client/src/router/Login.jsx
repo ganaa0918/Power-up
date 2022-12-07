@@ -6,12 +6,15 @@ import {Link , useNavigate, } from 'react-router-dom'
 import './styles.css'
 import {UserContext } from "./userContext"
 import { useContext } from 'react';
+import useToast from '../hooks/useToast';
+
 
 function Login() {
   const [ Uname , setUName ] = useState('');
   const [pass , setPass ] = useState();
   const { user  , setUser} = useContext(UserContext);
   const navigate = useNavigate();
+  const { addToast } = useToast()
   const handleClick = () => { 
     
     fetch('http://localhost:3001/Login' , 
@@ -27,19 +30,37 @@ function Login() {
       
       setUser(data);
       alert(user);
+     
       if(data[0] == "Хэрэглэгч") {
-      alert("амжилттай нэвтэрлээ");
-        navigate("/user/" + id);
+          addToast(
+            {
+                text: 'Амжилттай нэвтэрлээ',
+
+                type: 'success',
+            })
+        navigate("/user");
         
       } 
       else if (data[0] == "admin") { 
-        alert("амжилттай нэвтэрлээ");
+        addToast(
+          {
+              text: 'Амжилттай нэвтэрлээ',
+              type: 'success',
+          })
       }
       else { 
-        alert("амжилтгүй");
+        addToast(
+          {
+              text: 'амжилтгүй',
+              type: 'error',
+          })
       }
      
-    }).catch(error => { alert("Aldaa garlaa ");})
+    }).catch(error => { addToast(
+      {
+          text: 'Алдаа гарлаа',
+          type: 'error',
+      })})
 
   };
  

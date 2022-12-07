@@ -3,14 +3,21 @@ import Sidebar from '../../components/sidebar/Sidebar'
 import { FiEye } from 'react-icons/fi';
 import { UserContext} from "../userContext";
 import { useForm } from "react-hook-form"
-
+import { useForm } from "react-hook-form";
+import useToast from '../../hooks/useToast';
 // import { FiEyeOff } from 'react-icons/fi';
 
+
+ 
+
+
+
 function Profile() {
-  const {user} = useContext(UserContext);
+  const { addToast } = useToast()
   const [passwordShown, setPasswordShown] = useState(false);
   const [ Uname , setUName ] = useState('');
   const [pass , setPass ] = useState();
+  const {user} = useContext(UserContext);
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
   };
@@ -29,14 +36,21 @@ function Profile() {
       
     }
     ).then(data => data.json()).then(data => {
-        alert("amjilttai nemegdlee");
+       
       
       if (data.success) { 
-        alert("amjilttai nemegdlee");
+        addToast(
+          {
+              text: 'Амжилттай хадгалагдлаа',
+              theme: "light",
+              type: 'warning',
+          }
+      )
         
       } 
      
-    }).catch(error => { console.log(error);})
+    }).catch(error => { console.log(error);});
+ 
   };
   
   return (
@@ -56,7 +70,7 @@ function Profile() {
                       value = {Uname}  onChange = {e => setUName(e.target.value)}
                       {...register('Fname',{ required: true })}
                      
-                      /> {errors.Fname && <p>Нэр оруулна уу</p>}
+                      /> {errors.Fname && <p className='text-danger'>Нэр оруулна уу</p>}
                      </div>
                      <div className='mt-3 form-group'>
                      <label>Овог</label>
@@ -68,7 +82,7 @@ function Profile() {
                      placeholder="Та овог оруулна уу" 
                      {...register('lname',{ required: true })}
                      />
-                     {errors.lname && <p>Овог нэр оруулна уу.</p>}
+                     {errors.lname && <p className='text-danger'>Овог нэр зөв оруулна уу.</p>}
                      </div>
                      <div className='mt-3 form-group'>
                      <label>Регистр</label>
@@ -78,7 +92,7 @@ function Profile() {
                         placeholder="Username"
                         {...register('register.',{ required: true })}
                      />
-                     {errors.register && <p>Регистр оруулна уу</p>}
+                     {errors.register && <p className='text-danger'>Регистр зөв оруулна уу</p>}
                      </div> 
                      <div className='mt-3 form-group'>
                      <label>Гар утас дугаар</label>
@@ -88,7 +102,7 @@ function Profile() {
                         placeholder="Утасны дугаар" 
                         {...register('number.',{ required: true })} 
                         required/>
-                     {errors.number && <p>Дугаар оруулна уу</p>}
+                     {errors.number && <p className='text-danger'>Дугаар зөв оруулна уу</p>}
                      </div>
                      <div className='mt-3 form-group'>
                      <label>Password</label>
@@ -99,7 +113,7 @@ function Profile() {
                           type={passwordShown ? "text" : "password"}
                           {...register('password',{ required: true })}
                         />
-                       {errors.password && <p>Password оруулна уу</p>}
+                       {errors.password && <p className='text-danger'>Password зөв оруулна уу</p>}
                         
                         <div>
                           <FiEye onClick={togglePasswordVisiblity} />
@@ -114,7 +128,7 @@ function Profile() {
                         placeholder="Email оруулна уу" 
                         {...register('email',{ required: true })}
                      /> 
-                     {errors.email && <p> email оруулна уу</p>}
+                     {errors.email && <p className='text-danger'> email зөв оруулна уу</p>}
                      </div>
                      <div className='d-flex justify-center mt-3'>
                         <button 
@@ -126,9 +140,7 @@ function Profile() {
                      </div>
                 </form>
                 </div>
-                
         </div>
-        
     </div>
   )
 }

@@ -1,6 +1,9 @@
 import React from 'react'
 import { useState , useEffect , useContext } from 'react';
 import Sidebar from '../../components/sidebar/Sidebar'
+import { useForm } from "react-hook-form";
+import useToast from '../../hooks/useToast';
+
 import { UserContext} from "../userContext";
 function Zhiih() {
     const [type , setType ] = useState() ;
@@ -8,6 +11,17 @@ function Zhiih() {
     const [sar ,  setSar ] = useState() ;
     const [data1 , setData] = useState([]);
     const  { user }= useContext(UserContext);
+    const { addToast } = useToast()
+    const {  handleSubmit } = useForm();
+    const onSubmit = data => {
+      addToast(
+        {
+            text: 'Захиалга амжилттай хиигдлээ',
+            theme: "light",
+            type: 'success',
+        }
+    )
+    };
     const handleClick = () => { 
         alert(type);
         fetch('http://localhost:3001/zahialga/zahialga_hiih' , 
@@ -29,7 +43,6 @@ function Zhiih() {
           alert(data);
         }).catch(error => { console.log("error:" , error)})
       });
-     
   return (
     <div>
        <div className='flex'>
@@ -39,7 +52,7 @@ function Zhiih() {
                         
                         <h1>{user}Захиалгын хэсэг</h1>
                     </div>
-
+                <form className='w-96 ms-5 ' method='POST'>
                     <div class="flex justify-center mt-4">
                     <div class="mb-3 xl:w-96">
                         <select  id = "type " onClick={e => setType(e.target.value)} class="form-select appearance-none
@@ -84,7 +97,7 @@ function Zhiih() {
                         transition
                         ease-in-out
                         m-0
-                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example" >
                             <option selected> Цагийн хувиар сонгоно уу</option>
                             <option value="1">2 дахь өдөр 19-21 цаг  , 3 дахад 17-19..</option>
                             <option value="2">Two</option>
@@ -136,8 +149,9 @@ function Zhiih() {
                         </div>
                     </div>
                     <div class="flex justify-center mt-1">
-                    <button  className='btn' onClick={ handleClick} style={{backgroundColor: "#7A5CFA", color: "white"}}>Захиалга хийх</button>
+                    <button  className='btn' style={{backgroundColor: "#7A5CFA", color: "white"}}>Захиалга хийх</button>
                     </div>
+                    </form>
                 </div>
         </div>
     </div>

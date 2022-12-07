@@ -33,9 +33,6 @@ function Sidebar() {
           <NavLink  to="/huwaari" className="bg">
             <CDBSidebarMenuItem icon="clock">Хувиар харах</CDBSidebarMenuItem>
           </NavLink>
-          <NavLink  to="/infous" className="bg">
-            <CDBSidebarMenuItem icon="hospital">Байгууллагын мэдээлэл</CDBSidebarMenuItem>
-          </NavLink>
           <NavLink  to="/teacherinfo" className="bg">
             <CDBSidebarMenuItem icon="school">Багшийн мэдээлэл</CDBSidebarMenuItem>
           </NavLink>
