@@ -2,17 +2,21 @@
 import React from 'react'
 import {  useState } from 'react';
 import Loginim3 from '../image/loginsss.jpg'
-import {Link , useNavigate} from 'react-router-dom'
+import {Link , useNavigate, } from 'react-router-dom'
 import './styles.css'
+import {UserContext } from "./userContext"
+import { useContext } from 'react';
 import useToast from '../hooks/useToast';
 
 
 function Login() {
   const [ Uname , setUName ] = useState('');
   const [pass , setPass ] = useState();
+  const { user  , setUser} = useContext(UserContext);
   const navigate = useNavigate();
   const { addToast } = useToast()
   const handleClick = () => { 
+    
     fetch('http://localhost:3001/Login' , 
     {
       method: 'post' ,
@@ -22,7 +26,12 @@ function Login() {
     }
     ).then(data => data.json()).then(data => {
       
-      if(data == "Хэрэглэгч") {
+      var id = data[1];
+      
+      setUser(data);
+      alert(user);
+     
+      if(data[0] == "Хэрэглэгч") {
           addToast(
             {
                 text: 'Амжилттай нэвтэрлээ',
@@ -32,7 +41,7 @@ function Login() {
         navigate("/user");
         
       } 
-      else if (data == "admin") { 
+      else if (data[0] == "admin") { 
         addToast(
           {
               text: 'Амжилттай нэвтэрлээ',
@@ -63,7 +72,7 @@ function Login() {
       
       <div className='bg-white items-center justify-center flex md:mx-auto md:mx-0 w-full md:w-1/2 xl:w-1/3 px-6 lg:px-16 xl:px-12'>
         <div className='w-full h-100'>
-          <h1 className='text-3x1 font-bold text-center uppercase'>Нэвтрэх</h1> 
+          <h1 className='text-3x1 font-bold text-center uppercase'>Hэвтрэх</h1> 
           <form className='mt-6' action="#" method='POST'>
             <div>
                 <label htmlFor="username" className='text-gray-800 block ' > Username</label>
