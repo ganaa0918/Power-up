@@ -23,6 +23,7 @@ import Admin from "./router/Admin";
 import TeacherInfo from "./router/Admin/TeacherInfo";
 import UserInfo from "./router/Admin/UserInfo";
 import ZahialgaInfo from "./router/Admin/ZahialgaInfo";
+import AddTeacher from "./router/Admin/AddTeacher";
 function App() {
   return (
     
@@ -42,13 +43,15 @@ function App() {
         <Route path="/zahialga" element={<Zahialga />}/>
         <Route path="/zahialga/zahialga_hiih" element={<Zhiih />}/>
         <Route path="huwaari" element={<Huwaari />}/>
-        <Route path="teacherhuvaari" element={<Huvaari />}/>
-        <Route path="/techaerhuvaari/huvaarinemeh" element={<AddSchedule />}/>
+        <Route path="/teacher/teacherhuvaari" element={<Huvaari />}/>
+        <Route path="/teacher/teacherhuvaari/huvaarinemeh" element={<AddSchedule />}/>
         <Route path="/teacher" element={<Teacher />}/>
         <Route path="/admin" element={<Admin />}/>
-        <Route path="/teacher_info" element={<TeacherInfo />}/>
-        <Route path="/user_info" element={<UserInfo />}/>
-        <Route path="/zahialga_info" element={<ZahialgaInfo />}/>
+        <Route path="/admin/teacher_info" element={<TeacherInfo />}/>
+        <Route path="/admin/user_info" element={<UserInfo />}/>
+        <Route path="/admin/zahialga_info" element={<ZahialgaInfo />}/>
+        <Route path="/teacher_info/burtgeh" element={<AddTeacher />}/>
+        <Route path="/admin/teacher_info/add" element={<AddTeacher />}/>
     </Routes>
     <ToastContainer />
     </BrowserRouter>

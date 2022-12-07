@@ -25,7 +25,7 @@ function SidebarTeacher() {
 
       <CDBSidebarContent className="sidebar-content">
         <CDBSidebarMenu>
-          <NavLink  to="/teacherhuvaari" className="bg">
+          <NavLink  to="/teacher/teacherhuvaari" className="bg">
             <CDBSidebarMenuItem icon="teacher">Багшийн Хуваарь</CDBSidebarMenuItem>
           </NavLink> 
         </CDBSidebarMenu>

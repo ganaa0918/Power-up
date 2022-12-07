@@ -1,5 +1,5 @@
 import SidebarTeacher from '../../components/sidebar/SidebarTeacher'
-import {React, useState} from 'react'
+import React from 'react'
 import { useForm } from "react-hook-form";
 import useToast from '../../hooks/useToast';
 
@@ -14,6 +14,7 @@ function AddSchedule() {
           type: 'success',
       }
   )
+  console.log(data);
   };
   return (
     <div>
@@ -25,22 +26,40 @@ function AddSchedule() {
                      <label>Долоо хоног</label>
                      <input
                       className="form-control" 
-                      type="text" 
+                      type="text"
+                      name='day' 
                       placeholder="Та өдрөө оруулна уу" 
-                      {...register('week',{ required: true })}
+                      {...register('day',{ required: true })}
                      
-                      /> {errors.week && <p className='text-danger'>Та өдрөө зөв оруулна уу</p>}
+                      /> {errors.day && <p className='text-danger'>Та өдрөө зөв оруулна уу</p>}
                      </div>
+
                      <div className='mt-3 form-group'>
-                     <label>Цаг</label>
+                     <label>Эхлэх цаг</label>
                      <input 
                      className="form-control" 
-                     type="text" 
-                     name='time'
+                     type="time" 
+                     name='start_hour'
+                     min="08:00"
+                     max="20:00"
                      placeholder="Та цагаа оруулна уу" 
-                     {...register('time',{ required: true })}
+                     {...register('start_hour',{ required: true })}
                      />
-                     {errors.time && <p className='text-danger'>Та цагаа зөв оруулна уу.</p>}
+                     {errors.start_hour && <p className='text-danger'>Та цагаа зөв оруулна уу.</p>}
+                     </div>
+
+                     <div className='mt-3 form-group'>
+                     <label>Дуусах цаг</label>
+                     <input 
+                     className="form-control" 
+                     type="time" 
+                     name='end_hour'
+                     min="08:00"
+                     max="20:00"
+                     placeholder="Та цагаа оруулна уу" 
+                     {...register('end_hour',{ required: true })}
+                     />
+                     {errors.end_hour && <p className='text-danger'>Та цагаа зөв оруулна уу.</p>}
                      </div>
                      
                      <div className='d-flex justify-center mt-3'>
@@ -48,7 +67,7 @@ function AddSchedule() {
                         className='btn'  
                         type="submit" 
                         onClick={handleSubmit(onSubmit)}  
-                        style={{backgroundColor: "#7A5CFA", color: "white"}}>Засах</button>
+                        style={{backgroundColor: "#7A5CFA", color: "white"}} >Нэмэх</button>
                      </div>
                 </form>
                 </div>

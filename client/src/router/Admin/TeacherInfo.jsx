@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect,useState } from 'react';
 import DataTable from 'react-data-table-component';
 import SidebarAdmin from '../../components/sidebar/SidebarAdmin';
-
+import { Link } from 'react-router-dom';
 
 const handleButtonClick = () => {
 		
@@ -71,6 +71,9 @@ const data = [
                   }
                   progressPending={pending}
                   /></div>
+                  <div className='mt-2 justify-center d-flex'>
+                  <Link to={'/admin/teacher_info/add'} className='btn' style={{backgroundColor: "#7A5CFA", color: "white"}}>Нэмэх</Link>
+                  </div>
       </div>
       </div>
   )

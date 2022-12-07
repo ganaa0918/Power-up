@@ -24,13 +24,13 @@ function SidebarAdmin() {
 
       <CDBSidebarContent className="sidebar-content">
         <CDBSidebarMenu>
-          <NavLink  to="/teacher_info" className="bg">
+          <NavLink  to="/admin/teacher_info" className="bg">
             <CDBSidebarMenuItem >Багш нарын мэдээлэл</CDBSidebarMenuItem>
           </NavLink> 
-          <NavLink  to="/user_info" className="bg">
+          <NavLink  to="admin/user_info" className="bg">
             <CDBSidebarMenuItem >Хэрэглэгч нарын мэдээлэл</CDBSidebarMenuItem>
           </NavLink>
-          <NavLink  to="/zahialga_info" className="bg">
+          <NavLink  to="admin/zahialga_info" className="bg">
             <CDBSidebarMenuItem >Захиалгуудын мэдээлэл</CDBSidebarMenuItem>
           </NavLink> 
         </CDBSidebarMenu>
