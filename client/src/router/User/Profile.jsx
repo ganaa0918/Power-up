@@ -1,22 +1,48 @@
-import {React, useState} from 'react'
+import {React, useState , useContext , useEffect} from 'react'
 import Sidebar from '../../components/sidebar/Sidebar'
 import { FiEye } from 'react-icons/fi';
-import { useForm } from "react-hook-form";
+import { UserContext} from "../userContext";
+import { useForm } from "react-hook-form"
+
 // import { FiEyeOff } from 'react-icons/fi';
 
 function Profile() {
+  const {user} = useContext(UserContext);
   const [passwordShown, setPasswordShown] = useState(false);
+  const [ Uname , setUName ] = useState('');
+  const [pass , setPass ] = useState();
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
   };
   const { register, handleSubmit, formState: { errors }, } = useForm();
+  useEffect(() => { 
+    fetch('http://localhost:3000/profile/' ).then(data => data.json()).then(data =>{
+      alert(data);
+    }).catch(error => { console.log("error:" , error)})
+  });
   const onSubmit = data => {
-    // console.log(data);
+    fetch('http://localhost:3001/profile' , 
+    {
+      method: 'post' ,
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify({   })
+      
+    }
+    ).then(data => data.json()).then(data => {
+        alert("amjilttai nemegdlee");
+      
+      if (data.success) { 
+        alert("amjilttai nemegdlee");
+        
+      } 
+     
+    }).catch(error => { console.log(error);})
   };
-
- 
+  
   return (
+    
     <div>
+   
          <div className='flex'>
             <Sidebar />
                 <div className='container'style={{paddingTop:"100px",}} >
@@ -27,13 +53,15 @@ function Profile() {
                       className="form-control" 
                       type="text" 
                       placeholder="Та нэрээ оруулна уу" 
+                      value = {Uname}  onChange = {e => setUName(e.target.value)}
                       {...register('Fname',{ required: true })}
                      
                       /> {errors.Fname && <p>Нэр оруулна уу</p>}
                      </div>
                      <div className='mt-3 form-group'>
                      <label>Овог</label>
-                     <input 
+                     <input  
+                       value = {Uname}  onChange = {e => setUName(e.target.value)}
                      className="form-control" 
                      type="text" 
                      name='lname'
@@ -92,7 +120,8 @@ function Profile() {
                         <button 
                         className='btn'  
                         type="submit" 
-                        onClick={handleSubmit(onSubmit)}  
+                        onClick={handleSubmit(onSubmit)  }  
+                        
                         style={{backgroundColor: "#7A5CFA", color: "white"}}>Засах</button>
                      </div>
                 </form>

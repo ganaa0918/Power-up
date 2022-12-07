@@ -22,15 +22,14 @@ function Register() {
       
     }
     ).then(data => data.json()).then(data => {
-      
+        alert("amjilttai nemegdlee");
       
       if (data.success) { 
         alert("amjilttai nemegdlee");
-        navigate("/Login");
         
       } 
      
-    }).catch(error => { alert("Aldaaz garlaa ");})
+    }).catch(error => { console.log(error);})
 
   };
   return (
@@ -73,7 +72,7 @@ function Register() {
                      </div>
                      <div className='d-flex justify-between mt-3'>
                         <button className='btn' style={{backgroundColor: "#7A5CFA", color: "white"}}>Cancel</button>
-                        <button className='btn' type='submit' style={{backgroundColor: "#7A5CFA", color: "white"}} onClick = { handleClick}>Submit</button>
+                        <button className='btn'  style={{backgroundColor: "#7A5CFA", color: "white"}} onClick = { handleClick}>Submit</button>
                      </div>
                 </form>
             </div>

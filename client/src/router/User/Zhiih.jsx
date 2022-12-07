@@ -1,19 +1,48 @@
 import React from 'react'
+import { useState , useEffect , useContext } from 'react';
 import Sidebar from '../../components/sidebar/Sidebar'
-
+import { UserContext} from "../userContext";
 function Zhiih() {
+    const [type , setType ] = useState() ;
+    const [tsag ,  setTsag ] = useState() ;
+    const [sar ,  setSar ] = useState() ;
+    const [data1 , setData] = useState([]);
+    const  { user }= useContext(UserContext);
+    const handleClick = () => { 
+        alert(type);
+        fetch('http://localhost:3001/zahialga/zahialga_hiih' , 
+        {
+          method: 'post' ,
+          headers: { 'Content-Type': 'application/json'},
+          body: JSON.stringify({ type , tsag , sar  })
+          
+        }
+        ).then(data => data.json()).then(data => {
+          
+          data("amjilttai");
+         
+        }).catch(error => { alert("Aldaa garlaa ");})
+    
+      };
+      useEffect(() => { 
+        fetch('http://localhost:3000/zahialga/zahialga_hiih').then(data => data.json()).then(data =>{
+          alert(data);
+        }).catch(error => { console.log("error:" , error)})
+      });
+     
   return (
     <div>
        <div className='flex'>
             <Sidebar />
                 <div className='container'style={{paddingTop:"100px",}} >
                     <div className='d-flex justify-center'>
-                        <h1>Захиалгын хэсэг</h1>
+                        
+                        <h1>{user}Захиалгын хэсэг</h1>
                     </div>
 
                     <div class="flex justify-center mt-4">
                     <div class="mb-3 xl:w-96">
-                        <select class="form-select appearance-none
+                        <select  id = "type " onClick={e => setType(e.target.value)} class="form-select appearance-none
                         block
                         w-full
                         px-3
@@ -29,10 +58,10 @@ function Zhiih() {
                         m-0
                         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
                             <option selected>Төрлөө сонгоно уу</option>
-                            <option value="1">Aerobic</option>
-                            <option value="2">Spinnig</option>
-                            <option value="3">Хүчний дасгал</option>
-                            <option value="4">Сунгалтын дасгал</option>
+                            <option value="Aerobic">Aerobic</option>
+                            <option value="Spinnig">Spinnig</option>
+                            <option value="Хүчний дасгал">Хүчний дасгал</option>
+                            <option value="Сунгалтын дасгал">Сунгалтын дасгал</option>
                         </select>
                     </div>
                     </div>
@@ -40,7 +69,8 @@ function Zhiih() {
                     <div class="flex justify-center mt-1">
                     <div class="mb-3 xl:w-96">
                         <label htmlFor="huwaari" className='mb-2'> Цагийн хувиар сонгох</label>
-                        <select class="form-select appearance-none
+                        <select id = "tsag" onClick={e =>  setTsag(e.target.value)}
+                        class="form-select appearance-none
                         block
                         w-full
                         px-3
@@ -67,7 +97,8 @@ function Zhiih() {
                     <div class="flex justify-center mt-1">
                     <div class="mb-3 xl:w-96">
                         <label htmlFor="huwaari" className='mb-2'> Багц төрөл</label>
-                        <select class="form-select appearance-none
+                        <select 
+                        id = "sar" onClick={e =>  setSar(e.target.value)} class="form-select appearance-none
                         block
                         w-full
                         px-3
@@ -83,9 +114,9 @@ function Zhiih() {
                         m-0
                         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
                             <option selected> Багцаа сонгоно уу</option>
-                            <option value="1">1 сараар</option>
-                            <option value="2">3 сараар</option>
-                            <option value="3">6 сараар</option>
+                            <option value="1 сараар">1 сараар</option>
+                            <option value="3 сараар">3 сараар</option>
+                            <option value="6 сараар">6 сараар</option>
                         </select>
                     </div>
                     </div>
@@ -105,7 +136,7 @@ function Zhiih() {
                         </div>
                     </div>
                     <div class="flex justify-center mt-1">
-                    <button  className='btn' style={{backgroundColor: "#7A5CFA", color: "white"}}>Захиалга хийх</button>
+                    <button  className='btn' onClick={ handleClick} style={{backgroundColor: "#7A5CFA", color: "white"}}>Захиалга хийх</button>
                     </div>
                 </div>
         </div>
