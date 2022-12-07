@@ -3,7 +3,6 @@ import Sidebar from '../../components/sidebar/Sidebar'
 import { FiEye } from 'react-icons/fi';
 import { UserContext} from "../userContext";
 import { useForm } from "react-hook-form"
-import { useForm } from "react-hook-form";
 import useToast from '../../hooks/useToast';
 // import { FiEyeOff } from 'react-icons/fi';
 
