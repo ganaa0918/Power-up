@@ -2,14 +2,16 @@
 import React from 'react'
 import {  useState } from 'react';
 import Loginim3 from '../image/loginsss.jpg'
-import {Link} from 'react-router-dom'
+import {Link , useNavigate} from 'react-router-dom'
 import './styles.css'
+import useToast from '../hooks/useToast';
 
 
 function Login() {
   const [ Uname , setUName ] = useState('');
-  const [pass , setPass ] = useState(0);
-
+  const [pass , setPass ] = useState();
+  const navigate = useNavigate();
+  const { addToast } = useToast()
   const handleClick = () => { 
     fetch('http://localhost:3001/Login' , 
     {
@@ -19,14 +21,37 @@ function Login() {
       
     }
     ).then(data => data.json()).then(data => {
-      alert(data);
       
-      if (data === "Хэрэглэгч") { 
-        alert("amjilttai newterlee");
+      if(data == "Хэрэглэгч") {
+          addToast(
+            {
+                text: 'Амжилттай нэвтэрлээ',
+
+                type: 'success',
+            })
+        navigate("/user");
         
       } 
+      else if (data == "admin") { 
+        addToast(
+          {
+              text: 'Амжилттай нэвтэрлээ',
+              type: 'success',
+          })
+      }
+      else { 
+        addToast(
+          {
+              text: 'амжилтгүй',
+              type: 'error',
+          })
+      }
      
-    }).catch(error => { alert("Aldaa garlaa ");})
+    }).catch(error => { addToast(
+      {
+          text: 'Алдаа гарлаа',
+          type: 'error',
+      })})
 
   };
  
@@ -42,7 +67,7 @@ function Login() {
           <form className='mt-6' action="#" method='POST'>
             <div>
                 <label htmlFor="username" className='text-gray-800 block ' > Username</label>
-                <input type="text" placeholder='Username'className='w-full  text-black focus:bg-white-700 focus:outline-black bg-white-700 mt-2 border rounded-lg ' value = {Uname}  onChange = {e => setUName(e.target.value)} autoComplete autofocus required  />
+                <input type="text" placeholder='Username' name='Username' className='w-full   text-black focus:bg-white-700 focus:outline-black bg-white-700 mt-2 border rounded-lg ' value = {Uname}  onChange = {e => setUName(e.target.value)} autoComplete='true' autoFocus required  />
             </div>
             <div className='mt-4'>
                 <label htmlFor="password">Password</label>

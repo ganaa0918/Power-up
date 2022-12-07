@@ -10,9 +10,10 @@ import {
     CDBSidebarMenuItem,
   } from 'cdbreact';
 
-function Sidebar() {
+
+function SidebarTeacher() {
   return (
-    <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
+     <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
     <CDBSidebar textColor="#fff" backgroundColor="#2C2C2C">
       <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large flex"></i>}>
       <span className="d-inline">PowerUP
@@ -24,22 +25,10 @@ function Sidebar() {
 
       <CDBSidebarContent className="sidebar-content">
         <CDBSidebarMenu>
-          <NavLink  to="/profile" className="bg">
-            <CDBSidebarMenuItem icon="home">Миний профайл</CDBSidebarMenuItem>
-          </NavLink>
-          <NavLink  to="/zahialga" className="bg">
-            <CDBSidebarMenuItem icon="table">Захиалгын жагсаалт</CDBSidebarMenuItem>
-          </NavLink>
-          <NavLink  to="/huwaari" className="bg">
-            <CDBSidebarMenuItem icon="clock">Хувиар харах</CDBSidebarMenuItem>
-          </NavLink>
-          <NavLink  to="/teacherinfo" className="bg">
-            <CDBSidebarMenuItem icon="school">Багшийн мэдээлэл</CDBSidebarMenuItem>
-          </NavLink>
-          
-          
+          <NavLink  to="/teacherhuvaari" className="bg">
+            <CDBSidebarMenuItem icon="teacher">Багшийн Хуваарь</CDBSidebarMenuItem>
+          </NavLink> 
         </CDBSidebarMenu>
-        
       </CDBSidebarContent>
 
       <CDBSidebarFooter >
@@ -56,8 +45,7 @@ function Sidebar() {
       </CDBSidebarFooter>
     </CDBSidebar>
   </div>
-
   )
 }
 
-export default Sidebar
+export default SidebarTeacher

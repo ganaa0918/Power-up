@@ -11,6 +11,18 @@ import Blog from "./router/Blog";
 import Blog1 from "./components/blog/blog1";
 import Blog2 from "./components/blog/blog2";
 import Blog3 from "./components/blog/blog3";
+import Profile from "./router/User/Profile";
+import { ToastContainer } from "react-toastify";
+import Zahialga from "./router/User/Zahialga";
+import Zhiih from "./router/User/Zhiih";
+import Huwaari from "./router/User/Huwaari";
+import Huvaari from "./router/Teacher/Huvaari";
+import AddSchedule from "./router/Teacher/AddSchedule";
+import Teacher from "./router/Teacher";
+import Admin from "./router/Admin";
+import TeacherInfo from "./router/Admin/TeacherInfo";
+import UserInfo from "./router/Admin/UserInfo";
+import ZahialgaInfo from "./router/Admin/ZahialgaInfo";
 function App() {
   return (
     
@@ -26,8 +38,19 @@ function App() {
         <Route path="/blog2" element={<Blog2 />}/>
         <Route path="/blog3" element={<Blog3 />}/>
         <Route path="/Readmore" element={<Read/>}/>
-     
+        <Route path="/profile" element={<Profile />}/>
+        <Route path="/zahialga" element={<Zahialga />}/>
+        <Route path="/zahialga/zahialga_hiih" element={<Zhiih />}/>
+        <Route path="huwaari" element={<Huwaari />}/>
+        <Route path="teacherhuvaari" element={<Huvaari />}/>
+        <Route path="/techaerhuvaari/huvaarinemeh" element={<AddSchedule />}/>
+        <Route path="/teacher" element={<Teacher />}/>
+        <Route path="/admin" element={<Admin />}/>
+        <Route path="/teacher_info" element={<TeacherInfo />}/>
+        <Route path="/user_info" element={<UserInfo />}/>
+        <Route path="/zahialga_info" element={<ZahialgaInfo />}/>
     </Routes>
+    <ToastContainer />
     </BrowserRouter>
     </div>
   );
