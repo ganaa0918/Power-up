@@ -19,7 +19,7 @@ function Home() {
       <div className="mt-5">
       <h1 className='text-center text-white'>STORY ABOUT US</h1>
       <p className='mt-3 sm:text-center text-white'>Lorem ipsum proin gravida nibh vel velit auctor aliquet. Aenean pretium sollicitudin, nascetur auci elit consequat ipsutissem niuis sed odio sit amet nibh vulputate cursus a amet.</p>
-      <Link to={'/'} className=' btn btn-grad ms-5' >Read more</Link>
+      <Link to={'/Readmore'} className=' btn btn-grad ms-5' >Read more</Link>
       </div>
       
     </div>
