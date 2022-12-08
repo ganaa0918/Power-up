@@ -18,7 +18,9 @@ function Home() {
       </div>
       <div className="mt-5">
       <h1 className='text-center text-white'>STORY ABOUT US</h1>
-      <p className='mt-3 sm:text-center text-white'>Lorem ipsum proin gravida nibh vel velit auctor aliquet. Aenean pretium sollicitudin, nascetur auci elit consequat ipsutissem niuis sed odio sit amet nibh vulputate cursus a amet.</p>
+      <p className='mt-3 sm:text-center text-white'>Power-UP Gym 1965 онд АНУ-ын Калифорниа мужид нээгдэж, дэлхий даяар тархан түгсээр өдгөө 715 дахь салбар нь Монгол Улсад албан ёсоор нээгдэж байна. Бидний эрхэм зорилго болон алсын хараа нь “Хүн бүрт хамгийн төгс төгөлдөр фитнес соёлыг мэдрүүлж, түүгээр дамжуулан эрүүл чийрэг, эрч хүч, хүсэл эрмэлзлээр дүүрэн аж төрөхөд туслах бодит боломжийг бий болгоход оршино”.
+
+Power-UP Gym бяртай, хүчтэй, сэтгэл хөөрөл оргилсон тэнцвэрт байдлын зохицол...</p>
       <Link to={'/Readmore'} className=' btn btn-grad ms-5' >Read more</Link>
       </div>
       
