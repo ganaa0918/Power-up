@@ -1,6 +1,7 @@
 import React from 'react'
 import Sidebar from '../../components/sidebar/Sidebar';
 import DataTable from 'react-data-table-component';
+import{Link} from 'react-router-dom'
 function Huwaari() {
   const columns = [
     {
@@ -80,7 +81,7 @@ const data = [
       <th scope="row">18:00-20:00</th>
       <td></td>
       <td></td>
-      <td>body</td>
+      <td></td>
       <td></td>
       <td></td>
     </tr>
@@ -88,9 +89,9 @@ const data = [
       <th scope="row">20:00-22:00</th>
       <td></td>
       <td></td>
+      <td></td>
+      <td></td>
       <td>body</td>
-      <td></td>
-      <td></td>
     </tr>
   </tbody>
 </table>
@@ -108,6 +109,9 @@ const data = [
                     {rowsPerPageText: 'Хуудасны тоо:'}
                 }
                 /></div>
+                <div style={{paddingTop:"100px",justifyContent:"center"}} className="d-flex" >
+                <Link to={'/User/huwaari/irts'} className='btn' style={{backgroundColor: "#7A5CFA", color: "white"}}>Захиалга хийх</Link>
+                </div>
     </div>
     </div>
   )

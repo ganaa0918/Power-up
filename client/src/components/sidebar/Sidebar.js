@@ -24,16 +24,16 @@ function Sidebar() {
 
       <CDBSidebarContent className="sidebar-content">
         <CDBSidebarMenu>
-          <NavLink  to="/profile" className="bg">
+          <NavLink  to="/User/profile" className="bg">
             <CDBSidebarMenuItem icon="home">Миний профайл</CDBSidebarMenuItem>
           </NavLink>
-          <NavLink  to="/zahialga" className="bg">
+          <NavLink  to="/User/zahialga" className="bg">
             <CDBSidebarMenuItem icon="table">Захиалгын жагсаалт</CDBSidebarMenuItem>
           </NavLink>
-          <NavLink  to="/huwaari" className="bg">
+          <NavLink  to="/User/huwaari" className="bg">
             <CDBSidebarMenuItem icon="clock">Хувиар харах</CDBSidebarMenuItem>
           </NavLink>
-          <NavLink  to="/teacherinfo" className="bg">
+          <NavLink  to="/User/info_teacher" className="bg">
             <CDBSidebarMenuItem icon="school">Багшийн мэдээлэл</CDBSidebarMenuItem>
           </NavLink>
           
