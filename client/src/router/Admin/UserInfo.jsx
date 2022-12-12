@@ -15,24 +15,25 @@ function UserInfo() {
     const timeout = setTimeout(() => {
      setColumns([
       {
-        name: 'Name',
+        name: 'Нэр',
         selector: row => row.name,
     },
     {
-        name: 'Өдөр',
-        selector: row => row.day,
+        name: 'Овог',
+        selector: row => row.fname,
     },
     {
-        name: 'Цаг',
-        selector: row => row.status,
+        name: 'Гар утас',
+        selector: row => row.phone,
     },
     {
-				
-      cell: () => <button onClick={handleButtonClick} >Засах</button>,
-      ignoreRowClick: true,
-      allowOverflow: true,
-      button: true,
-    },
+      name: 'Password',
+      selector: row => row.password,
+  },
+  {
+    name: 'Хүйс',
+    selector: row => row.gender,
+},
     {
       cell: () => <button onClick={handleButtonClick} >Устгах</button>,
       ignoreRowClick: true,
@@ -49,10 +50,10 @@ const data = [
   {
       id: 1,
       name: 'Beetlejuice',
-      day: 'Даваа',
-      status: '11:00-13:00',
-      
-
+      fname: 'Salmon',
+      phone: '+1 (921) 513-2012',
+      password: 'sd',
+      gender: 'Эм',
   },
 ]
   return (
