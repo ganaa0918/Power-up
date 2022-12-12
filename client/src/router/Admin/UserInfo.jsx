@@ -15,16 +15,20 @@ function UserInfo() {
     const timeout = setTimeout(() => {
      setColumns([
       {
-        name: 'Нэр',
-        selector: row => row.name,
-    },
-    {
-        name: 'Овог',
+        name: 'овог',
         selector: row => row.fname,
     },
     {
-        name: 'Гар утас',
-        selector: row => row.phone,
+      name: 'Нэр',
+      selector: row => row.name,
+  },
+    {
+        name: 'Утас',
+        selector: row => row.number,
+    },
+    {
+        name: 'email',
+        selector: row => row.email,
     },
     {
       name: 'Password',
@@ -48,12 +52,10 @@ function UserInfo() {
 
 const data = [
   {
-      id: 1,
-      name: 'Beetlejuice',
-      fname: 'Salmon',
-      phone: '+1 (921) 513-2012',
-      password: 'sd',
-      gender: 'Эм',
+    fname: 'Shine',
+    name: 'Beetlejuice',
+    number: '95484478',
+    email: "toogoo@gmail.com"
   },
 ]
   return (

@@ -25,6 +25,9 @@ import TeacherInfo from "./router/Admin/TeacherInfo";
 import UserInfo from "./router/Admin/UserInfo";
 import ZahialgaInfo from "./router/Admin/ZahialgaInfo";
 import AddTeacher from "./router/Admin/AddTeacher";
+import InfoTeach from "./router/User/InfoTeach";
+
+
 function App() {
   const [user, setUser] = useState();
   return (
@@ -45,13 +48,14 @@ function App() {
         <Route path="/blog2" element={<Blog2 />}/>
         <Route path="/blog3" element={<Blog3 />}/>
         <Route path="/Readmore" element={<Read/>}/>
-        <Route path="/profile" element={<Profile />}/>
-        <Route path="/zahialga" element={<Zahialga />}/>
-        <Route path="/zahialga/zahialga_hiih" element={<Zhiih />}/>
-        <Route path="huwaari" element={<Huwaari />}/>
+        <Route path="/User/profile" element={<Profile />}/>
+        <Route path="/User/zahialga" element={<Zahialga />}/>
+        <Route path="/User/zahialga/zahialga_hiih" element={<Zhiih />}/>
+        <Route path="/User/huwaari" element={<Huwaari />}/>
         <Route path="/teacher/teacherhuvaari" element={<Huvaari />}/>
         <Route path="/teacher/teacherhuvaari/huvaarinemeh" element={<AddSchedule />}/>
         <Route path="/teacher" element={<Teacher />}/>
+        <Route path="/User/info_teacher" element={<InfoTeach />}/>
         <Route path="/admin" element={<Admin />}/>
         <Route path="/admin/teacher_info" element={<TeacherInfo />}/>
         <Route path="/admin/user_info" element={<UserInfo />}/>
