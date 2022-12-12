@@ -55,7 +55,9 @@ const data = [
     fname: 'Shine',
     name: 'Beetlejuice',
     number: '95484478',
-    email: "toogoo@gmail.com"
+    email: "toogoo@gmail.com",
+    password: 'sd',
+    gender:'Эр',
   },
 ]
   return (
