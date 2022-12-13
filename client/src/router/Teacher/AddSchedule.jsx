@@ -2,24 +2,78 @@ import SidebarTeacher from '../../components/sidebar/SidebarTeacher'
 import React from 'react'
 import { Controller, useForm } from "react-hook-form";
 import useToast from '../../hooks/useToast';
-import Select from 'react-select'
+import { ColourOption, selectTypes,selectOptions,selectTime } from './docs/data.ts';
+import Select, { StylesConfig } from 'react-select';
+import chroma from 'chroma-js';
 import classnames from 'classnames/bind';
-const selectOptions = [
-  { value: "Даваа гараг", label: "Даваа гараг" },
-  { value: "Мягмар гараг", label: "Мягмар гараг" },
-  { value: "Лхагва гараг", label: "Лхагва гараг" },
-  { value: "Пүрэв гараг", label: "Пүрэв гараг" },
-  { value: "Баасан гараг", label: "Баасан гараг" },
-  { value: "Бямба гараг", label: "Бямба гараг" },
-  { value: "Ням гараг", label: "Баасан гараг" }
-];
+// const selectOptions = [
+//   { value: "Даваа гараг", label: "Даваа гараг" },
+//   { value: "Мягмар гараг", label: "Мягмар гараг" },
+//   { value: "Лхагва гараг", label: "Лхагва гараг" },
+//   { value: "Пүрэв гараг", label: "Пүрэв гараг" },
+//   { value: "Баасан гараг", label: "Баасан гараг" },
+//   { value: "Бямба гараг", label: "Бямба гараг" },
+//   { value: "Ням гараг", label: "Баасан гараг" }
+// ];
 
-const selectTypes = [
-  { value: "Aerobic", label: "Aerobic" },
-  { value: "Spinnig", label: "Spinnig" },
-  { value: "Хүчний дасгал", label: "Хүчний дасгал" },
-  { value: "Сунгалтын дасгал", label: "Сунгалтын дасгал" }
-]
+// const selectTypes = [
+//   { value: "Aerobic", label: "Aerobic" },
+//   { value: "Spinnig", label: "Spinnig" },
+//   { value: "Хүчний дасгал", label: "Хүчний дасгал" },
+//   { value: "Сунгалтын дасгал", label: "Сунгалтын дасгал" }
+// ]
+
+const dot = (color = 'transparent') => ({
+  alignItems: 'center',
+  display: 'flex',
+
+  ':before': {
+    backgroundColor: color,
+    borderRadius: 10,
+    content: '" "',
+    display: 'block',
+    marginRight: 8,
+    height: 10,
+    width: 10,
+  },
+});
+
+const colourStyles: StylesConfig<ColourOption> = {
+  control: (styles) => ({ ...styles, backgroundColor: 'white' }),
+  option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+    const color = chroma(data.color);
+    return {
+      ...styles,
+      backgroundColor: isDisabled
+        ? undefined
+        : isSelected
+        ? data.color
+        : isFocused
+        ? color.alpha(0.1).css()
+        : undefined,
+      color: isDisabled
+        ? '#ccc'
+        : isSelected
+        ? chroma.contrast(color, 'white') > 2
+          ? 'white'
+          : 'black'
+        : data.color,
+      cursor: isDisabled ? 'not-allowed' : 'default',
+
+      ':active': {
+        ...styles[':active'],
+        backgroundColor: !isDisabled
+          ? isSelected
+            ? data.color
+            : color.alpha(0.3).css()
+          : undefined,
+      },
+    };
+  },
+  input: (styles) => ({ ...styles, ...dot() }),
+  placeholder: (styles) => ({ ...styles, ...dot('#ccc') }),
+  singleValue: (styles, { data }) => ({ ...styles, ...dot(data.color) }),
+};
 
 function AddSchedule() {
     const { addToast } = useToast()
@@ -48,19 +102,20 @@ function AddSchedule() {
                        <Controller
                       name="type"
                       control={control}
-                      defaultValue=""
                       render={({ field }) => (
                         <Select
+                        styles={colourStyles}
                         {...register("type", {
                           required: true
                         })}
+                        defaultValue={selectTypes[0]}
                         options={selectTypes}
                         {...field} label="Text field" 
                         className={classnames('form-control', { 'is-invalid': errors.type })} />
                       )}  
                     />
                       <small className="text-danger">
-                      {errors.type && <p >Та төрлөө зөв оруулна уу.</p>}
+                      {errors.type && <p >Та төрлөө оруулна уу.</p>}
                       </small>
                      </div>
 
@@ -69,68 +124,42 @@ function AddSchedule() {
                        <Controller
                       name="week"
                       control={control}
-                      defaultValue=""
                       render={({ field }) => (
                         <Select
+                        styles={colourStyles}
                         {...register("week", {
                           required: true
                         })}
+                        defaultValue={selectOptions[0]}
                         options={selectOptions}
                         {...field} label="Text field" 
                         className={classnames('form-control', { 'is-invalid': errors.week })} />
                       )}  
                     />
                       <small className="text-danger">
-                      {errors.week && <p >Та өдрөө зөв оруулна уу.</p>}
+                      {errors.week && <p >Та өдрөө оруулна уу.</p>}
                       </small>
                      </div>
 
-                     <div className='mt-3 form-group'>
-                     <label>Эхлэх цаг</label>
-                     <Controller
-                                    name='start_time'
-                                    control={control}
-                                    defaultValue=""
-                                    render={({ field }) => (
-                                        <input
-                                            {...register("start_time", {
-                                                required: true
-                                            })}
-                                            {...field}
-                                            id='start_time'
-                                            placeholder='Сонгох'
-                                            type="time"
-                                            className={classnames('form-control', { 'is-invalid': errors.start_time })}
-                                        />
-                                    )}
-                                />
-                       <small className="text-danger">
-                      {errors.start_time && <p >Та цагаа зөв оруулна уу.</p>}
-                      </small>
-                   
-                     </div>
-
-                     <div className='mt-3 form-group'>
-                     <label>Дуусах цаг</label>
-                     <Controller
-                                    name='end_time'
-                                    control={control}
-                                    defaultValue=""
-                                    render={({ field }) => (
-                                        <input
-                                            {...register("end_time", {
-                                                required: true
-                                            })}
-                                            {...field}
-                                            id='end_time'
-                                            placeholder='Сонгох'
-                                            type="time"
-                                            className={classnames('form-control', { 'is-invalid': errors.end_time })}
-                                        />
-                                    )}
-                                />
-                     <small className="text-danger">
-                      {errors.end_time && <p >Та цагаа зөв оруулна уу.</p>}
+                     <div className="form-group mt-3">
+                    <label>Цаг оруулах</label>
+                       <Controller
+                      name="time"
+                      control={control}
+                      render={({ field }) => (
+                        <Select
+                       
+                        {...register("time", {
+                          required: true
+                        })}
+                        defaultValue={selectTime[0]}
+                        options={selectTime}
+                        {...field} label="Text field" 
+                        className={classnames('form-control', { 'is-invalid': errors.time })} />
+                      )}  
+                    />
+                      <small className="text-danger">
+                      {errors.time && <p >Та цагаа оруулна уу.</p>}
                       </small>
                      </div>
                      
