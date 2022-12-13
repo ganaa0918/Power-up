@@ -53,7 +53,7 @@ function Zahialga() {
                 }
                 />
                 <div style={{paddingTop:"100px",justifyContent:"center"}} className="d-flex" >
-                <Link to={'/zahialga/zahialga_hiih'} className='btn' style={{backgroundColor: "#7A5CFA", color: "white"}}>Захиалга хийх</Link>
+                <Link to={'/User/zahialga/zahialga_hiih'} className='btn' style={{backgroundColor: "#7A5CFA", color: "white"}}>Захиалга хийх</Link>
                 </div>
                 </div>
                 

@@ -9,7 +9,6 @@ function Zhiih() {
     const [type , setType ] = useState() ;
     const [tsag ,  setTsag ] = useState() ;
     const [sar ,  setSar ] = useState() ;
-    const [data1 , setData] = useState([]);
     const  { user }= useContext(UserContext);
     const { addToast } = useToast()
     const {  handleSubmit } = useForm();
