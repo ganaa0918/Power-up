@@ -1,6 +1,8 @@
 import SidebarTeacher from '../../components/sidebar/SidebarTeacher'
 import React from 'react'
 import { Controller, useForm } from "react-hook-form";
+import {React , useContext , useState} from 'react'
+import { useForm } from "react-hook-form";
 import useToast from '../../hooks/useToast';
 import { ColourOption, selectTypes,selectOptions,selectTime } from './docs/data.ts';
 import Select, { StylesConfig } from 'react-select';
@@ -74,93 +76,81 @@ const colourStyles: StylesConfig<ColourOption> = {
   placeholder: (styles) => ({ ...styles, ...dot('#ccc') }),
   singleValue: (styles, { data }) => ({ ...styles, ...dot(data.color) }),
 };
+import { UserContext} from "../userContext";
 
 function AddSchedule() {
     const { addToast } = useToast()
-  const { register, handleSubmit, formState: { errors },control  } = useForm({
-    mode: "onBlur"
-  });
+  const { register, handleSubmit, formState: { errors }, } = useForm();
   const onSubmit = data => {
-    addToast(
-      {
-          text: 'Амжилттай нэмэгдлээ',
-          theme: "light",
-          type: 'success',
-      }
-  )
-  console.log(data);
-  };
+    
+    
+    alert(etsag);
+    var day = 1;
+    fetch('http://localhost:3001/teacher/teacherhuvaari/huvaarinemeh' , 
+    {
+      method: 'post' ,
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify({day , etsag , dtsag })
+      
+    }
+    ).then(data => data.json()).then(data => {
+      
+        addToast(
+
+            {
+                text: 'Захиалга амжилттай хиигдлээ',
+                theme: "light",
+                type: 'success',
+            }
+            )
+    }).catch(error => { alert("Aldaa garlaa ");})
+    
+  
+  }
   return (
     <div>
          <div className='flex'>
             <SidebarTeacher />
                 <div className='container'style={{paddingTop:"100px",}} >
-                <form className='w-96 ms-5 '>
-                  
-                <div className="form-group mt-3">
-                    <label>Төрөл</label>
-                       <Controller
-                      name="type"
-                      control={control}
-                      render={({ field }) => (
-                        <Select
-                        styles={colourStyles}
-                        {...register("type", {
-                          required: true
-                        })}
-                        defaultValue={selectTypes[0]}
-                        options={selectTypes}
-                        {...field} label="Text field" 
-                        className={classnames('form-control', { 'is-invalid': errors.type })} />
-                      )}  
-                    />
-                      <small className="text-danger">
-                      {errors.type && <p >Та төрлөө оруулна уу.</p>}
-                      </small>
-                     </div>
-
+                <form className='w-96 ms-5 ' method='POST'>
                     <div className="form-group mt-3">
-                    <label>Өдөр хоног</label>
-                       <Controller
-                      name="week"
-                      control={control}
-                      render={({ field }) => (
-                        <Select
-                        styles={colourStyles}
-                        {...register("week", {
-                          required: true
-                        })}
-                        defaultValue={selectOptions[0]}
-                        options={selectOptions}
-                        {...field} label="Text field" 
-                        className={classnames('form-control', { 'is-invalid': errors.week })} />
-                      )}  
-                    />
-                      <small className="text-danger">
-                      {errors.week && <p >Та өдрөө оруулна уу.</p>}
-                      </small>
+                     <label>Долоо хоног</label>
+                     <input
+                      className="form-control" 
+                      type="text"
+                      name='day' 
+                      placeholder="Та өдрөө оруулна уу" 
+                      {...register('day',{ required: true })}
+                     
+                      /> {errors.day && <p className='text-danger'>Та өдрөө зөв оруулна уу</p>}
                      </div>
 
-                     <div className="form-group mt-3">
-                    <label>Цаг оруулах</label>
-                       <Controller
-                      name="time"
-                      control={control}
-                      render={({ field }) => (
-                        <Select
-                       
-                        {...register("time", {
-                          required: true
-                        })}
-                        defaultValue={selectTime[0]}
-                        options={selectTime}
-                        {...field} label="Text field" 
-                        className={classnames('form-control', { 'is-invalid': errors.time })} />
-                      )}  
-                    />
-                      <small className="text-danger">
-                      {errors.time && <p >Та цагаа оруулна уу.</p>}
-                      </small>
+                     <div className='mt-3 form-group'>
+                     <label>Эхлэх цаг</label>
+                     <input 
+                     className="form-control" 
+                     type="time" 
+                     name='start_hour'
+                     min="08:00"
+                     max="20:00"
+                     placeholder="Та цагаа оруулна уу" 
+                     {...register('start_hour',{ required: true })}
+                     />
+                     {errors.start_hour && <p className='text-danger'>Та цагаа зөв оруулна уу.</p>}
+                     </div>
+
+                     <div className='mt-3 form-group'>
+                     <label>Дуусах цаг</label>
+                     <input 
+                     className="form-control" 
+                     type="time" 
+                     name='end_hour'
+                     min="08:00"
+                     max="20:00"
+                     placeholder="Та цагаа оруулна уу" 
+                     {...register('end_hour',{ required: true })}
+                     />
+                     {errors.end_hour && <p className='text-danger'>Та цагаа зөв оруулна уу.</p>}
                      </div>
                      
                      <div className='d-flex justify-center mt-3'>

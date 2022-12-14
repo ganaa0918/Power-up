@@ -50,7 +50,7 @@ function App() {
         <Route path="/Readmore" element={<Read/>}/>
         <Route path="/User/profile" element={<Profile />}/>
         <Route path="/User/zahialga" element={<Zahialga />}/>
-        <Route path="/User/zahialga/zahialga_hiih" element={<Zhiih />}/>
+        <Route path="/zahialga/zahialga_hiih" element={<Zhiih />}/>
         <Route path="/User/huwaari" element={<Huwaari />}/>
         <Route path="/teacher/teacherhuvaari" element={<Huvaari />}/>
         <Route path="/teacher/teacherhuvaari/huvaarinemeh" element={<AddSchedule />}/>

@@ -10,21 +10,26 @@ const handleButtonClick = () => {
 };
 
 function TeacherInfo() {
-  
+  const [data , setData] = useState([]);
   useEffect(() => {
+    fetch('http://localhost:3001/admin/user_info').then(data => data.json()).then(data => {
+      console.log(data);
+      setData(data);
+      alert("hi");
+    }).catch(error => { console.log("error:", error) });
 		const timeout = setTimeout(() => {
       setColumns ([
         {
             name: 'овог',
-            selector: row => row.fname,
+            selector: row => row.Fname,
         },
         {
           name: 'Нэр',
-          selector: row => row.name,
+          selector: row => row.username,
       },
         {
             name: 'Утас',
-            selector: row => row.number,
+            selector: row => row.Phone,
         },
         {
             name: 'email',
@@ -45,20 +50,7 @@ function TeacherInfo() {
   const [columns, setColumns] = useState([]);
 	const [pending, setPending] = React.useState(true);
 
-const data = [
-  {
-      fname: 'John',
-      name: 'andrew',
-      number: '95484478',
-      email: "john@gmail.com"
 
-
-
-      
-      
-
-  },
-]
   return (
     <div className='flex'>
       <SidebarAdmin />

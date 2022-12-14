@@ -9,35 +9,47 @@ const handleButtonClick = () => {
 };
 
 function UserInfo() {
+  const [data , setData] = useState([]);
   const [columns, setColumns] = useState([]);
 	const [pending, setPending] = React.useState(true);
+ 
   useEffect(()=>{
+    
+
     const timeout = setTimeout(() => {
+      fetch('http://localhost:3001/admin/user_info').then(data => data.json()).then(data => {
+      console.log(data);
+      setData(data);
+      alert("hi");
+    }).catch(error => { console.log("error:", error) });
      setColumns([
       {
         name: 'овог',
-        selector: row => row.fname,
+        selector: row => row.Fname,
     },
     {
       name: 'Нэр',
-      selector: row => row.name,
+      selector: row => row.username,
   },
     {
         name: 'Утас',
-        selector: row => row.number,
+        selector: row => row.Phone,
     },
     {
         name: 'email',
         selector: row => row.email,
     },
     {
-      name: 'Password',
+      name: 'Нууц үг',
       selector: row => row.password,
-  },
-  {
-    name: 'Хүйс',
-    selector: row => row.gender,
-},
+    },
+    {
+				
+      cell: () => <button onClick={handleButtonClick} >Засах</button>,
+      ignoreRowClick: true,
+      allowOverflow: true,
+      button: true,
+    },
     {
       cell: () => <button onClick={handleButtonClick} >Устгах</button>,
       ignoreRowClick: true,
@@ -47,19 +59,11 @@ function UserInfo() {
      ]);
      setPending(false);
     },2000);
+    
     return () => clearTimeout(timeout);
+  
   },[])
 
-const data = [
-  {
-    fname: 'Shine',
-    name: 'Beetlejuice',
-    number: '95484478',
-    email: "toogoo@gmail.com",
-    password: 'sd',
-    gender:'Эр',
-  },
-]
   return (
     <div className='flex'>
       <SidebarAdmin />

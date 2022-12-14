@@ -34,9 +34,10 @@ const data = [
      <div className='container'style={{paddingTop:"100px",}}>
         <div>
         <table class="table table-striped table-dark">
+   
   <thead>
     <tr>
-      <th scope="col">Цөг</th>
+      <th scope="col">Цаг</th>
       <th scope="col">Даваа </th>
       <th scope="col">Мягмар </th>
       <th scope="col">Лхагва </th>
