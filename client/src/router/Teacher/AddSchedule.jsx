@@ -2,82 +2,26 @@ import SidebarTeacher from '../../components/sidebar/SidebarTeacher'
 import { Controller, useForm } from "react-hook-form";
 import {React , useContext , useState} from 'react'
 import useToast from '../../hooks/useToast';
-import { ColourOption, selectTypes,selectOptions,selectTime } from './docs/data.ts';
-import Select, { StylesConfig } from 'react-select';
-import chroma from 'chroma-js';
 import classnames from 'classnames/bind';
 import { UserContext} from "../userContext";
 import { Link } from 'react-router-dom';
 
-const dot = (color = 'transparent') => ({
-  alignItems: 'center',
-  display: 'flex',
-
-  ':before': {
-    backgroundColor: color,
-    borderRadius: 10,
-    content: '" "',
-    display: 'block',
-    marginRight: 8,
-    height: 10,
-    width: 10,
-  },
-});
-
-const colourStyles: StylesConfig<ColourOption> = {
-  control: (styles) => ({ ...styles, backgroundColor: 'white' }),
-  option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-    const color = chroma(data.color);
-    return {
-      ...styles,
-      backgroundColor: isDisabled
-        ? undefined
-        : isSelected
-        ? data.color
-        : isFocused
-        ? color.alpha(0.1).css()
-        : undefined,
-      color: isDisabled
-        ? '#ccc'
-        : isSelected
-        ? chroma.contrast(color, 'white') > 2
-          ? 'white'
-          : 'black'
-        : data.color,
-      cursor: isDisabled ? 'not-allowed' : 'default',
-
-      ':active': {
-        ...styles[':active'],
-        backgroundColor: !isDisabled
-          ? isSelected
-            ? data.color
-            : color.alpha(0.3).css()
-          : undefined,
-      },
-    };
-  },
-  input: (styles) => ({ ...styles, ...dot() }),
-  placeholder: (styles) => ({ ...styles, ...dot('#ccc') }),
-  singleValue: (styles, { data }) => ({ ...styles, ...dot(data.color) }),
-};
-
 
 function AddSchedule() {
+  const [type, setType] = useState();
+  const [day, setDay] = useState();
+  const [time, setTime] = useState();
     const { addToast } = useToast()
     const { register, handleSubmit, formState: { errors },control  } = useForm({
       mode: "onBlur"
     });
   const onSubmit = data => {
-    
-    
- 
-    var day = 1;
+    // var day = 1;
     fetch('http://localhost:3001/teacher/teacherhuvaari/huvaarinemeh' , 
     {
       method: 'post' ,
       headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify({ })
-      
+      body: JSON.stringify({type, day, time })
     }
     ).then(data => data.json()).then(data => {
       
@@ -90,8 +34,6 @@ function AddSchedule() {
             }
             )
     }).catch(error => { alert("Aldaa garlaa ");})
-    
-  
   }
   return (
     <div>
@@ -106,15 +48,20 @@ function AddSchedule() {
                       name="type"
                       control={control}
                       render={({ field }) => (
-                        <Select
-                        styles={colourStyles}
+                        <select
+                        onClick={e => setType(e.target.value)}
                         {...register("type", {
-                          required: true
+                          required: true,
+                          
                         })}
-                        defaultValue={selectTypes[0]}
-                        options={selectTypes}
                         {...field} label="Text field" 
-                        className={classnames('form-control', { 'is-invalid': errors.type })} />
+                        className={classnames('form-control', { 'is-invalid': errors.type })} >
+                          <option selected>Төрлөө сонгоно уу</option>
+                            <option value="Aerobic">Aerobic</option>
+                            <option value="Spinnig">Spinnig</option>
+                            <option value="Хүчний дасгал">Хүчний дасгал</option>
+                            <option value="Сунгалтын дасгал">Сунгалтын дасгал</option>
+                        </select>
                       )}  
                     />
                       <small className="text-danger">
@@ -128,15 +75,22 @@ function AddSchedule() {
                       name="week"
                       control={control}
                       render={({ field }) => (
-                        <Select
-                        styles={colourStyles}
+                        <select
+                        onClick={e => setDay(e.target.value)}
                         {...register("week", {
                           required: true
                         })}
-                        defaultValue={selectOptions[0]}
-                        options={selectOptions}
                         {...field} label="Text field" 
-                        className={classnames('form-control', { 'is-invalid': errors.week })} />
+                        className={classnames('form-control', { 'is-invalid': errors.week })} >
+                          <option selected>Өдөр сонгоно уу</option>
+                            <option value="Monday">Даваа гараг</option>
+                            <option value="Tuesday">'Мягмар гараг</option>
+                            <option value="Wednesday">'Лхагва гараг</option>
+                            <option value="Thursday">Пүрэв гараг</option>
+                            <option value="Friday">'Баасан гараг</option>
+                            <option value="Saturday">'Бямба гараг</option>
+                            <option value="Sunday">'Ням гараг</option>
+                        </select>
                       )}  
                     />
                       <small className="text-danger">
@@ -150,15 +104,20 @@ function AddSchedule() {
                       name="time"
                       control={control}
                       render={({ field }) => (
-                        <Select
-                       
+                        <select 
+                        onClick={e => setTime(e.target.value)}
                         {...register("time", {
                           required: true
                         })}
-                        defaultValue={selectTime[0]}
-                        options={selectTime}
                         {...field} label="Text field" 
-                        className={classnames('form-control', { 'is-invalid': errors.time })} />
+                        className={classnames('form-control', { 'is-invalid': errors.time })} >
+                            <option selected>цаг сонгоно уу</option>
+                            <option value="time1">8:00-10:00</option>
+                            <option value="time2">10:00-12:00</option>
+                            <option value="time3">18:00-20:00</option>
+                            <option value="time4">20:00-22:00г</option>
+
+                        </select>
                       )}  
                     />
                       <small className="text-danger">
