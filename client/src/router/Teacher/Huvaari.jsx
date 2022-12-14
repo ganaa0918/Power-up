@@ -9,16 +9,16 @@ function Huvaari() {
 		const timeout = setTimeout(() => {
       setColumns ([
         {
+            name: 'Төрөл',
+            selector: row => row.type,
+        },
+        {
             name: 'Өдөр',
             selector: row => row.day,
         },
         {
-            name: 'Эхлэх Цаг',
-            selector: row => row.start_hour,
-        },
-        {
-          name: 'Дуусах Цаг',
-          selector: row => row.end_hour,
+          name: 'Цаг',
+          selector: row => row.time,
       },
     ]);
 			setPending(false);
@@ -27,15 +27,11 @@ function Huvaari() {
 	}, []);
   const data= [
     {
+      type: 'Aerobic',
       day: 'Пүрэв',
-      start_hour: '16:00',
-      end_hour: '17:00',
-      status: 'Active',},
-      {
-        day: 'Пүрэв',
-        start_hour: '16:00',
-        end_hour: '17:00',
-        status: 'Active',}
+      time: '10:00-12:00',
+    },
+    
 
   ]
   const [columns, setColumns] = useState([]);

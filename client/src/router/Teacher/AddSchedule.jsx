@@ -7,6 +7,7 @@ import Select, { StylesConfig } from 'react-select';
 import chroma from 'chroma-js';
 import classnames from 'classnames/bind';
 import { UserContext} from "../userContext";
+import { Link } from 'react-router-dom';
 
 const dot = (color = 'transparent') => ({
   alignItems: 'center',
@@ -164,7 +165,14 @@ function AddSchedule() {
                       {errors.time && <p >Та цагаа оруулна уу.</p>}
                       </small>
                      </div>
-                     <div className='d-flex justify-center mt-3'>
+                     <div className='d-flex justify-between mt-3'>
+                     <Link 
+                     to={'/teacher/teacherhuvaari'}
+                        className='btn'  
+                        type="submit" 
+                        
+                        style={{backgroundColor: "#7A5CFA", color: "white"}} >Буцах</Link>
+                     
                         <button 
                         className='btn'  
                         type="submit" 
