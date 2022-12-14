@@ -6,54 +6,67 @@ import useToast from '../../hooks/useToast';
 
 import { UserContext} from "../userContext";
 function Zhiih() {
+    
     const [type , setType ] = useState() ;
     const [tsag ,  setTsag ] = useState() ;
     const [sar ,  setSar ] = useState() ;
-    const [data1 , setData] = useState([]);
+    const [Tsag, setTsagiin] = useState([]) ;
     const  { user }= useContext(UserContext);
     const { addToast } = useToast()
     const {  handleSubmit } = useForm();
+    useEffect(() => {
+        fetch('http://localhost:3001/zahialga/zahialga_hiih').then(data => data.json()).then(data => {
+          console.log(data);
+          console.log("test1");
+          setTsagiin(data);
+          
+
+        }).catch(error => { console.log("error:", error) })
+      }, []);
     const onSubmit = data => {
-      addToast(
-        {
-            text: 'Захиалга амжилттай хиигдлээ',
-            theme: "light",
-            type: 'success',
-        }
-    )
-    };
-    const handleClick = () => { 
-        alert(type);
+        
+        
         fetch('http://localhost:3001/zahialga/zahialga_hiih' , 
         {
           method: 'post' ,
           headers: { 'Content-Type': 'application/json'},
-          body: JSON.stringify({ type , tsag , sar  })
+          body: JSON.stringify({  user , type , tsag  , sar   })
           
         }
         ).then(data => data.json()).then(data => {
           
-          data("amjilttai");
-         
-        }).catch(error => { alert("Aldaa garlaa ");})
+            addToast(
     
-      };
-      useEffect(() => { 
-        fetch('http://localhost:3000/zahialga/zahialga_hiih').then(data => data.json()).then(data =>{
-          alert(data);
-        }).catch(error => { console.log("error:" , error)})
-      });
+                {
+                    text: 'Захиалга амжилттай хиигдлээ',
+                    theme: "light",
+                    type: 'success',
+                }
+                )
+        }).catch(error => { alert("Aldaa garlaa ");})
+    };
+    
+   
+  
   return (
     <div>
+         
        <div className='flex'>
             <Sidebar />
                 <div className='container'style={{paddingTop:"100px",}} >
                     <div className='d-flex justify-center'>
                         
-                        <h1>{user}Захиалгын хэсэг</h1>
+                        
                     </div>
+                    
                 <form className='w-96 ms-5 ' method='POST'>
+                <div className='d-flex justify-center'>
+                        
+                        <h1>Захиалгын хэсэг</h1>
+                    </div>
+                <label htmlFor="huwaari" className='mb-2'>Дасгалын төрөлөө сонгох </label>
                     <div class="flex justify-center mt-4">
+                    
                     <div class="mb-3 xl:w-96">
                         <select  id = "type " onClick={e => setType(e.target.value)} class="form-select appearance-none
                         block
@@ -82,7 +95,7 @@ function Zhiih() {
                     <div class="flex justify-center mt-1">
                     <div class="mb-3 xl:w-96">
                         <label htmlFor="huwaari" className='mb-2'> Цагийн хувиар сонгох</label>
-                        <select id = "tsag" onClick={e =>  setTsag(e.target.value)}
+                        <select id = "tsag"  onClick={e => setTsag(e.target.value)}
                         class="form-select appearance-none
                         block
                         w-full
@@ -98,17 +111,22 @@ function Zhiih() {
                         ease-in-out
                         m-0
                         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example" >
-                            <option selected> Цагийн хувиар сонгоно уу</option>
-                            <option value="1">2 дахь өдөр 19-21 цаг  , 3 дахад 17-19..</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
+                        {Tsag.map((tsag1, i) => 
+                            <option  key={i} value="1">{tsag1.tsagiin_huwaari}</option>
+                            
+                        
+                       )}
+                       </select>
                     </div>
                     </div>
 
                     
                     <div class="flex justify-center mt-1">
-                    <div class="mb-3 xl:w-96">
+                    
+                    
+                 
+                       
+                    <div  class="mb-3 xl:w-96">
                         <label htmlFor="huwaari" className='mb-2'> Багц төрөл</label>
                         <select 
                         id = "sar" onClick={e =>  setSar(e.target.value)} class="form-select appearance-none
@@ -127,9 +145,9 @@ function Zhiih() {
                         m-0
                         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
                             <option selected> Багцаа сонгоно уу</option>
-                            <option value="1 сараар">1 сараар</option>
-                            <option value="3 сараар">3 сараар</option>
-                            <option value="6 сараар">6 сараар</option>
+                            <option value="{tsag1.tsagiin_huwaari}">1</option>
+                           
+                           
                         </select>
                     </div>
                     </div>
@@ -149,11 +167,18 @@ function Zhiih() {
                         </div>
                     </div>
                     <div class="flex justify-center mt-1">
-                    <button  className='btn' style={{backgroundColor: "#7A5CFA", color: "white"}}>Захиалга хийх</button>
+                    <button  className='btn'
+                     type="submit" 
+                     onClick={handleSubmit(onSubmit)}  
+                    style={{backgroundColor: "#7A5CFA", color: "white"}}>Захиалга хийх</button>
                     </div>
+                   
                     </form>
                 </div>
+               
+
         </div>
+       
     </div>
   )
 }

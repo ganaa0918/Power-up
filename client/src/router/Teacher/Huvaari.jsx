@@ -30,7 +30,13 @@ function Huvaari() {
       day: 'Пүрэв',
       start_hour: '16:00',
       end_hour: '17:00',
-      status: 'Active',}
+      status: 'Active',},
+      {
+        day: 'Пүрэв',
+        start_hour: '16:00',
+        end_hour: '17:00',
+        status: 'Active',}
+
   ]
   const [columns, setColumns] = useState([]);
 	const [pending, setPending] = React.useState(true);

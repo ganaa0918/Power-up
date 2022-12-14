@@ -2,7 +2,7 @@
 import React from 'react'
 import {  useState } from 'react';
 import Loginim3 from '../image/loginsss.jpg'
-import {Link , useNavigate, } from 'react-router-dom'
+import {Link , useNavigate } from 'react-router-dom'
 import './styles.css'
 import {UserContext } from "./userContext"
 import { useContext } from 'react';
@@ -14,7 +14,7 @@ function Login() {
   const [pass , setPass ] = useState();
   const { user  , setUser} = useContext(UserContext);
   const navigate = useNavigate();
-  const { addToast } = useToast()
+  const { addToast } = useToast();
   const handleClick = () => { 
     
     fetch('http://localhost:3001/Login' , 
@@ -25,11 +25,11 @@ function Login() {
       
     }
     ).then(data => data.json()).then(data => {
+      alert(data);
       
       var id = data[1];
+      setUser(id);
       
-      setUser(data);
-      alert(user);
      
       if(data[0] == "Хэрэглэгч") {
           addToast(
@@ -41,12 +41,21 @@ function Login() {
         navigate("/user");
         
       } 
-      else if (data[0] == "admin") { 
+      else if (data[0] == "админ") { 
         addToast(
           {
               text: 'Амжилттай нэвтэрлээ',
               type: 'success',
           })
+          navigate("/admin");
+      }
+      else if (data[0] == "Багш") { 
+        addToast(
+          {
+              text: 'Амжилттай нэвтэрлээ',
+              type: 'success',
+          })
+          navigate("/teacher");
       }
       else { 
         addToast(

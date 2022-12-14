@@ -2,18 +2,41 @@ import React from 'react'
 import { useForm } from "react-hook-form";
 import useToast from '../../hooks/useToast';
 import SidebarAdmin from '../../components/sidebar/SidebarAdmin'
+import { useState } from 'react';
 
 function AddTeacher() {
+    const [fname , setFName]  = useState('');
+    const [username , setUName]  = useState('f');
+    const [utas , setUtas]  = useState('f');
+    const [tsahim , setUHayg]  = useState('f');
+    const type = "Багш";
     const { addToast } = useToast()
     const { register, handleSubmit, formState: { errors }, } = useForm();
     const onSubmit = data => {
-      addToast(
-        {
-            text: 'Амжилттай нэмэгдлээ',
-            theme: "light",
-            type: 'success',
-        }
-    )
+      
+      fetch('http://localhost:3001/register' , 
+      {
+        method: 'post' ,
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify({ username, fname  , type})
+        
+      }
+      ).then(data => data.json()).then(data => {
+         
+        
+        if (data.success) { 
+          addToast(
+            {
+                text: 'Амжилттай нэмэгдлээ',
+                theme: "light",
+                type: 'success',
+            }
+        )
+          
+        } 
+       
+      }).catch(error => { console.log(error);})
+     
     console.log(data);
     };
   return (
@@ -30,8 +53,9 @@ function AddTeacher() {
                 className="form-control" 
                 type="text"  
                 name='Fname'
-                
-                {...register('Fname',{ required: true })}
+                value = {fname}
+                onChange = {e => setFName(e.target.value)} 
+              
                 />
                 {errors.Fname && <p className='text-danger'>Та овог нэрээ оруулна уу.</p>}
                 </div>
@@ -42,7 +66,9 @@ function AddTeacher() {
                 className="form-control" 
                 type="text"  
                 name='name'
-                
+               
+                value={username}
+                onChange = {e => setUtas(e.target.value)}
                 {...register('name',{ required: true })}
                 />
                 {errors.name && <p className='text-danger'>Та нэр оруулна уу.</p>}
@@ -54,7 +80,8 @@ function AddTeacher() {
                 className="form-control" 
                 type="text"  
                 name='name'
-                
+                value={utas}
+                onChange = {e => setUName(e.target.value)} 
                 {...register('name',{ required: true })}
                 />
                 {errors.name && <p className='text-danger'>Та утас дугаар оруулна уу.</p>}
@@ -66,7 +93,8 @@ function AddTeacher() {
                 className="form-control" 
                 type="email"  
                 name='name'
-                
+                value={tsahim}
+                onChange = {e => setUHayg(e.target.value)} 
                 {...register('name',{ required: true })}
                 />
                 {errors.name && <p className='text-danger'>Та  цахим хаяг оруулна уу.</p>}

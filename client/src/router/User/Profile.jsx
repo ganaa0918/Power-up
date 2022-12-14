@@ -14,24 +14,23 @@ import useToast from '../../hooks/useToast';
 function Profile() {
   const { addToast } = useToast()
   const [passwordShown, setPasswordShown] = useState(false);
-  const [ Uname , setUName ] = useState('');
+  
   const [pass , setPass ] = useState();
-  const {user} = useContext(UserContext);
+  const {user , setUser} = useContext(UserContext);
+  const [hi ,setUser1 ] = useState('');
+  const [hi1 , setUser2] = useState('');
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
   };
   const { register, handleSubmit, formState: { errors }, } = useForm();
-  useEffect(() => { 
-    fetch('http://localhost:3000/profile/' ).then(data => data.json()).then(data =>{
-      alert(data);
-    }).catch(error => { console.log("error:" , error)})
-  });
+  
   const onSubmit = data => {
+    alert( hi1);
     fetch('http://localhost:3001/profile' , 
     {
       method: 'post' ,
       headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify({   })
+ 
       
     }
     ).then(data => data.json()).then(data => {
@@ -66,20 +65,23 @@ function Profile() {
                       className="form-control" 
                       type="text" 
                       placeholder="Та нэрээ оруулна уу" 
-                      value = {Uname}  onChange = {e => setUName(e.target.value)}
-                      {...register('Fname',{ required: true })}
+                      value = {hi} 
+                      
+                      {...register('Fname',{  onChange :(e) => setUser1(e.target.value) })}
                      
                       /> {errors.Fname && <p className='text-danger'>Нэр оруулна уу</p>}
                      </div>
                      <div className='mt-3 form-group'>
                      <label>Овог</label>
                      <input  
-                       value = {Uname}  onChange = {e => setUName(e.target.value)}
+                       value = {hi1} 
+                        
                      className="form-control" 
                      type="text" 
                      name='lname'
                      placeholder="Та овог оруулна уу" 
-                     {...register('lname',{ required: true })}
+                     
+                     {...register('lname',{  onChange : (e) => setUser2(e.target.value)})}
                      />
                      {errors.lname && <p className='text-danger'>Овог нэр зөв оруулна уу.</p>}
                      </div>

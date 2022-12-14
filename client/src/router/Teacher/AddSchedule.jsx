@@ -1,21 +1,43 @@
 import SidebarTeacher from '../../components/sidebar/SidebarTeacher'
-import React from 'react'
+import {React , useContext , useState} from 'react'
 import { useForm } from "react-hook-form";
 import useToast from '../../hooks/useToast';
+import { UserContext} from "../userContext";
 
 function AddSchedule() {
-    const { addToast } = useToast()
+  const [ day , setDay ] = useState('');
+  const [ etsag , setEtsag ] = useState();
+  const [ dtsag , setDtsag ] = useState();
+    const { addToast } = useToast();
+    const {user} = useContext(UserContext);
   const { register, handleSubmit, formState: { errors }, } = useForm();
+  
   const onSubmit = data => {
-    addToast(
-      {
-          text: 'Амжилттай нэмэгдлээ',
-          theme: "light",
-          type: 'success',
-      }
-  )
-  console.log(data);
-  };
+    
+    
+    alert(etsag);
+    var day = 1;
+    fetch('http://localhost:3001/teacher/teacherhuvaari/huvaarinemeh' , 
+    {
+      method: 'post' ,
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify({day , etsag , dtsag })
+      
+    }
+    ).then(data => data.json()).then(data => {
+      
+        addToast(
+
+            {
+                text: 'Захиалга амжилттай хиигдлээ',
+                theme: "light",
+                type: 'success',
+            }
+            )
+    }).catch(error => { alert("Aldaa garlaa ");})
+    
+  
+  }
   return (
     <div>
          <div className='flex'>
@@ -28,8 +50,11 @@ function AddSchedule() {
                       className="form-control" 
                       type="text"
                       name='day' 
+                      
+                      value={day}
+                      onChange = {e => setDay(e.target.value)}
                       placeholder="Та өдрөө оруулна уу" 
-                      {...register('day',{ required: true })}
+                      {...register('day',{onChange : (e) => setDay(e.target.value) })}
                      
                       /> {errors.day && <p className='text-danger'>Та өдрөө зөв оруулна уу</p>}
                      </div>
@@ -42,8 +67,10 @@ function AddSchedule() {
                      name='start_hour'
                      min="08:00"
                      max="20:00"
+                     value = {etsag}
+                    
                      placeholder="Та цагаа оруулна уу" 
-                     {...register('start_hour',{ required: true })}
+                     {...register('start_hour',{ onClick : (e) => setEtsag(e.target.value)  })}
                      />
                      {errors.start_hour && <p className='text-danger'>Та цагаа зөв оруулна уу.</p>}
                      </div>
@@ -57,7 +84,9 @@ function AddSchedule() {
                      min="08:00"
                      max="20:00"
                      placeholder="Та цагаа оруулна уу" 
-                     {...register('end_hour',{ required: true })}
+                     value = {dtsag}
+                    
+                     {...register('end_hour',{ onClick : (e) => setDtsag(e.target.value)  })}
                      />
                      {errors.end_hour && <p className='text-danger'>Та цагаа зөв оруулна уу.</p>}
                      </div>
