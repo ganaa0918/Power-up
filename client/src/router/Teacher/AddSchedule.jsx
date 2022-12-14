@@ -1,29 +1,12 @@
 import SidebarTeacher from '../../components/sidebar/SidebarTeacher'
-import React from 'react'
 import { Controller, useForm } from "react-hook-form";
 import {React , useContext , useState} from 'react'
-import { useForm } from "react-hook-form";
 import useToast from '../../hooks/useToast';
 import { ColourOption, selectTypes,selectOptions,selectTime } from './docs/data.ts';
 import Select, { StylesConfig } from 'react-select';
 import chroma from 'chroma-js';
 import classnames from 'classnames/bind';
-// const selectOptions = [
-//   { value: "Даваа гараг", label: "Даваа гараг" },
-//   { value: "Мягмар гараг", label: "Мягмар гараг" },
-//   { value: "Лхагва гараг", label: "Лхагва гараг" },
-//   { value: "Пүрэв гараг", label: "Пүрэв гараг" },
-//   { value: "Баасан гараг", label: "Баасан гараг" },
-//   { value: "Бямба гараг", label: "Бямба гараг" },
-//   { value: "Ням гараг", label: "Баасан гараг" }
-// ];
-
-// const selectTypes = [
-//   { value: "Aerobic", label: "Aerobic" },
-//   { value: "Spinnig", label: "Spinnig" },
-//   { value: "Хүчний дасгал", label: "Хүчний дасгал" },
-//   { value: "Сунгалтын дасгал", label: "Сунгалтын дасгал" }
-// ]
+import { UserContext} from "../userContext";
 
 const dot = (color = 'transparent') => ({
   alignItems: 'center',
@@ -76,7 +59,7 @@ const colourStyles: StylesConfig<ColourOption> = {
   placeholder: (styles) => ({ ...styles, ...dot('#ccc') }),
   singleValue: (styles, { data }) => ({ ...styles, ...dot(data.color) }),
 };
-import { UserContext} from "../userContext";
+
 
 function AddSchedule() {
     const { addToast } = useToast()
@@ -84,13 +67,13 @@ function AddSchedule() {
   const onSubmit = data => {
     
     
-    alert(etsag);
+ 
     var day = 1;
     fetch('http://localhost:3001/teacher/teacherhuvaari/huvaarinemeh' , 
     {
       method: 'post' ,
       headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify({day , etsag , dtsag })
+      body: JSON.stringify({ })
       
     }
     ).then(data => data.json()).then(data => {

@@ -44,13 +44,6 @@ function UserInfo() {
       selector: row => row.password,
     },
     {
-				
-      cell: () => <button onClick={handleButtonClick} >Засах</button>,
-      ignoreRowClick: true,
-      allowOverflow: true,
-      button: true,
-    },
-    {
       cell: () => <button onClick={handleButtonClick} >Устгах</button>,
       ignoreRowClick: true,
       allowOverflow: true,
