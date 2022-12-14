@@ -1,33 +1,7 @@
 import React from 'react'
 import Sidebar from '../../components/sidebar/Sidebar';
-import DataTable from 'react-data-table-component';
 import{Link} from 'react-router-dom'
 function Huwaari() {
-  const columns = [
-    {
-        name: 'Name',
-        selector: row => row.name,
-    },
-    {
-        name: 'Day',
-        selector: row => row.day,
-    },
-    {
-        name: 'Status',
-        selector: row => row.status,
-    },
-];
-
-const data = [
-    {
-        id: 1,
-        name: 'Beetlejuice',
-        day: 'Даваа',
-        status: 'Active',
-        
-
-    },
-]
   return (
      <div className='flex'>
      <Sidebar />

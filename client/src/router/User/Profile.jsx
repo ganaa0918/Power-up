@@ -1,20 +1,14 @@
-import {React, useState , useContext , useEffect} from 'react'
+import {React, useState , useContext } from 'react'
 import Sidebar from '../../components/sidebar/Sidebar'
 import { FiEye } from 'react-icons/fi';
 import { UserContext} from "../userContext";
 import { useForm } from "react-hook-form"
 import useToast from '../../hooks/useToast';
-// import { FiEyeOff } from 'react-icons/fi';
-
-
- 
-
 
 
 function Profile() {
   const { addToast } = useToast()
   const [passwordShown, setPasswordShown] = useState(false);
-  
   const [pass , setPass ] = useState();
   const {user , setUser} = useContext(UserContext);
   const [hi ,setUser1 ] = useState('');
