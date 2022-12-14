@@ -97,19 +97,6 @@ const data = [
   </tbody>
 </table>
         </div>
-      <div> <DataTable
-                title="Захиалгын түүх"
-                columns={columns}
-                data={data}
-                pagination
-                paginationPerPage={5}
-                paginationRowsPerPageOptions={[5,10]}
-                theme='light'
-                noDataComponent={'Жагсаалт байхгүй байна'}
-                paginationComponentOptions={
-                    {rowsPerPageText: 'Хуудасны тоо:'}
-                }
-                /></div>
                 <div style={{paddingTop:"100px",justifyContent:"center"}} className="d-flex" >
                 <Link to={'/User/huwaari/irts'} className='btn' style={{backgroundColor: "#7A5CFA", color: "white"}}>Захиалга хийх</Link>
                 </div>

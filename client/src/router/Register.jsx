@@ -8,6 +8,7 @@ function Register() {
   const [ username , setUName ] = useState('');
   const [ Fname , setFName ] = useState('');
   const [ Phone , setPhone ] = useState('');
+  const [ Email , setEmail ] = useState('');
   const [ repassword , setrePass ] = useState(0);
   const [password , setPass ] = useState(0);
   const navigate = useNavigate();
@@ -49,6 +50,10 @@ function Register() {
                      <div className='mt-3 form-group'>
                      <label>Гар утас</label>
                      <input className="form-control" type="text" placeholder="Утасны дугаару"value = { Phone } onChange = {e => setPhone(e.target.value)} />
+                     </div>
+                     <div className='mt-3 form-group'>
+                     <label>Email</label>
+                     <input className="form-control" type="text" placeholder="Утасны дугаару"value = { Email } onChange = {e => setEmail(e.target.value)} />
                      </div>
                      <div className='mt-3 form-group'>
                      <label>Password</label>

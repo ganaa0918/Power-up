@@ -25,7 +25,6 @@ import TeacherInfo from "./router/Admin/TeacherInfo";
 import UserInfo from "./router/Admin/UserInfo";
 import ZahialgaInfo from "./router/Admin/ZahialgaInfo";
 import AddTeacher from "./router/Admin/AddTeacher";
-import InfoTeach from "./router/User/InfoTeach";
 
 
 function App() {
@@ -55,7 +54,6 @@ function App() {
         <Route path="/teacher/teacherhuvaari" element={<Huvaari />}/>
         <Route path="/teacher/teacherhuvaari/huvaarinemeh" element={<AddSchedule />}/>
         <Route path="/teacher" element={<Teacher />}/>
-        <Route path="/User/info_teacher" element={<InfoTeach />}/>
         <Route path="/admin" element={<Admin />}/>
         <Route path="/admin/teacher_info" element={<TeacherInfo />}/>
         <Route path="/admin/user_info" element={<UserInfo />}/>
