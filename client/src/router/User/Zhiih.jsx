@@ -11,11 +11,12 @@ function Zhiih() {
     const [tsag ,  setTsag ] = useState() ;
     const [sar ,  setSar ] = useState() ;
     const [Tsag, setTsagiin] = useState([]) ;
+    const t = "Захиалга";
     const  { user }= useContext(UserContext);
     const { addToast } = useToast()
     const {  handleSubmit } = useForm();
     useEffect(() => {
-        fetch('http://localhost:3001/zahialga/zahialga_hiih').then(data => data.json()).then(data => {
+        fetch('http://localhost:3001/User/zahialga/zahialga_hiih').then(data => data.json()).then(data => {
           console.log(data);
           console.log("test1");
           setTsagiin(data);
@@ -26,11 +27,11 @@ function Zhiih() {
     const onSubmit = data => {
         
         
-        fetch('http://localhost:3001/zahialga/zahialga_hiih' , 
+        fetch('http://localhost:3001/User/zahialga/zahialga_hiih' , 
         {
           method: 'post' ,
           headers: { 'Content-Type': 'application/json'},
-          body: JSON.stringify({  user , type , tsag  , sar   })
+          body: JSON.stringify({  user , type , tsag  , sar , t   })
           
         }
         ).then(data => data.json()).then(data => {
@@ -68,7 +69,7 @@ function Zhiih() {
                     <div class="flex justify-center mt-4">
                     
                     <div class="mb-3 xl:w-96">
-                        <select  id = "type " onClick={e => setType(e.target.value)} class="form-select appearance-none
+                        <select  id = "type" onClick={e => setType(e.target.value)} class="form-select appearance-none
                         block
                         w-full
                         px-3
@@ -112,7 +113,7 @@ function Zhiih() {
                         m-0
                         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example" >
                         {Tsag.map((tsag1, i) => 
-                            <option  key={i} value="1">{tsag1.tsagiin_huwaari}</option>
+                            <option  key={i} value= {tsag1.tsagiin_huwaari}>{tsag1.day}{ tsag1.tsagiin_huwaari}</option>
                             
                         
                        )}
@@ -145,9 +146,9 @@ function Zhiih() {
                         m-0
                         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
                             <option selected> Багцаа сонгоно уу</option>
-                            <option value="{tsag1.tsagiin_huwaari}">1</option>
-                           
-                           
+                            <option value="1 сар">1 сар</option>
+                            <option value="3 сар">3 сар</option>
+                            <option value="6 сар">6 сар</option>
                         </select>
                     </div>
                     </div>

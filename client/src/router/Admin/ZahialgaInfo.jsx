@@ -6,18 +6,24 @@ import SidebarAdmin from '../../components/sidebar/SidebarAdmin';
 
 const handleButtonClick = () => {
 		
-  console.log('clicked');
+  
 };
 
 function ZahialgaInfo() {
   const [columns, setColumns] = useState([]);
 	const [pending, setPending] = React.useState(true);
+  const [data , setData] = useState([]);
   useEffect(()=>{
+    fetch('http://localhost:3001/admin/zahialga_info').then(data => data.json()).then(data => {
+    
+    setData(data);
+    
+  }).catch(error => { console.log("error:", error) });
     const timeout = setTimeout(()=>{
       setColumns([
         {
-          name: 'Name',
-          selector: row => row.name,
+          name: 'Төрөл',
+          selector: row => row.type,
       },
       {
           name: 'Өдөр',
@@ -25,8 +31,12 @@ function ZahialgaInfo() {
       },
       {
           name: 'Цаг',
-          selector: row => row.status,
+          selector: row => row.tsag,
       },
+      {
+        name: 'Сар',
+        selector: row => row.sar,
+    },
       {
 				
 				cell: () => <button onClick={handleButtonClick} >Устгах</button>,
@@ -40,16 +50,7 @@ function ZahialgaInfo() {
 		return () => clearTimeout(timeout);
   },[])
   
-const data = [
-  {
-      id: 1,
-      name: 'Beetlejuice',
-      day: 'Даваа',
-      status: '11:00-13:00',
-      
 
-  },
-]
   return (
     <div className='flex'>
       <SidebarAdmin />

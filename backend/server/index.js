@@ -70,7 +70,7 @@ app.route('/register').post(function (req, res) {
 });
 
 
-app.route('/zahialga/zahialga_hiih').post(function (req, res) {
+app.route('/User/zahialga/zahialga_hiih').post(function (req, res) {
     async function run() {
     const client = new MongoClient(uri);
     try {
@@ -90,7 +90,7 @@ app.route('/zahialga/zahialga_hiih').post(function (req, res) {
   }
   run().catch(console.dir);
  });
-app.route('/zahialga/zahialga_hiih').get(function (req, res) {
+app.route('/User/zahialga/zahialga_hiih').get(function (req, res) {
   async function run() {
     const client = new MongoClient(uri);
     try {
@@ -113,11 +113,7 @@ app.route('/zahialga/zahialga_hiih').get(function (req, res) {
   run().catch(console.dir);
 });
 
-app.route('/user/:id').get(function (req, res)  {
-  console.log(req.params.id);
-  res.send("hi");
-  
-});
+
 
 
 
@@ -146,7 +142,7 @@ async function run() {
 run().catch(console.dir);
     
   });
-  app.route('/admin/user_info').get(function (req, res)  {
+  app.route('/admin/teacher_info').get(function (req, res)  {
     const client = new MongoClient(uri);
 async function run() {
   try {
@@ -161,6 +157,58 @@ async function run() {
       console.log("No documents found!");
     }
     res.send(await cursor.toArray());
+    
+    // replace console.dir with your callback to access individual elements
+    
+  } finally {
+    await client.close();
+  }
+}
+run().catch(console.dir);
+    
+  });
+  app.route('/admin/zahialga_info').get(function (req, res)  {
+    const client = new MongoClient(uri);
+async function run() {
+  try {
+    const database = client.db("Fitness");
+    const movies = database.collection("Order");
+    // query for movies that have a runtime less than 15 minutes
+    const query = { t: "Захиалга" };
+    
+    const cursor = movies.find(query);
+    // print a message if no documents were found
+    if ((await cursor.count()) === 0) {
+      console.log("No documents found!");
+    }
+    res.send(await cursor.toArray());
+    
+    // replace console.dir with your callback to access individual elements
+    
+  } finally {
+    await client.close();
+  }
+}
+run().catch(console.dir);
+    
+  });
+  app.route('/admin/user_info').delete(function (req, res)  {
+    const client = new MongoClient(uri);
+async function run() {
+  try {
+    console.log(req.body);
+    const database = client.db("Fitness");
+    const movies = database.collection("Customer");
+    // query for movies that have a runtime less than 15 minutes
+    
+    const result = await movies.deleteOne(req.body);
+    if (result.deletedCount === 1) {
+      console.log("Successfully deleted one document.");
+    } else {
+      console.log("No documents matched the query. Deleted 0 documents.");
+    }
+    // print a message if no documents were found
+    
     
     // replace console.dir with your callback to access individual elements
     
@@ -201,16 +249,19 @@ app.route('/profile').post(function (req, res) {
     try {
       const database = client.db('Fitness');
       const Cus = database.collection('Customer');
+      console.log(req.body);
+      const filter = { _id:  req.body.user};
       
-        
+      const options = { $set: { username: req.body.username , 
+                        Fname: req.body.Fname , 
+                        Phone : req.body.Phone , 
+                        password: req.body.password , 
+                        email: req.body.email} };
        
 
-        const Ctype = await Cus.findOne(req.body);
-        console.log(Ctype._id);
-        console.log("h1" + Ctype.type);
-
-        res.send([Ctype.type]);
-        console.log(req.body);
+      const Ctype = await Cus.findOneAndUpdate(filter , options);
+      console.log(Ctype);
+      res.send('{"success":true');
       
       
     } finally {
