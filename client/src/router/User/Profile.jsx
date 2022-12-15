@@ -9,22 +9,25 @@ import useToast from '../../hooks/useToast';
 function Profile() {
   const { addToast } = useToast()
   const [passwordShown, setPasswordShown] = useState(false);
-  const [pass , setPass ] = useState();
+  const [password , setUser4 ] = useState();
   const {user , setUser} = useContext(UserContext);
-  const [hi ,setUser1 ] = useState('');
-  const [hi1 , setUser2] = useState('');
+  const [Fname ,setUser1 ] = useState('');
+  const [email , setUser5] = useState('');
+  const [Phone , setUser3] = useState();
+  const [username, setUser2] = useState('');
+
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
   };
   const { register, handleSubmit, formState: { errors }, } = useForm();
   
   const onSubmit = data => {
-    alert( hi1);
+   
     fetch('http://localhost:3001/profile' , 
     {
       method: 'post' ,
       headers: { 'Content-Type': 'application/json'},
- 
+      body: JSON.stringify({user , Fname , username , Phone , password , email   }),
       
     }
     ).then(data => data.json()).then(data => {
@@ -59,7 +62,7 @@ function Profile() {
                       className="form-control" 
                       type="text" 
                       placeholder="Та нэрээ оруулна уу" 
-                      value = {hi} 
+                      value = {Fname} 
                       
                       {...register('Fname',{  onChange :(e) => setUser1(e.target.value) })}
                      
@@ -68,7 +71,7 @@ function Profile() {
                      <div className='mt-3 form-group'>
                      <label>Овог</label>
                      <input  
-                       value = {hi1} 
+                       value = {username} 
                         
                      className="form-control" 
                      type="text" 
@@ -94,8 +97,9 @@ function Profile() {
                      <input 
                         className="form-control" 
                         type="number" 
+                        value = {Phone}
                         placeholder="Утасны дугаар" 
-                        {...register('number.',{ required: true })} 
+                        {...register('number.',{ onChange : (e) => setUser3(e.target.value) })} 
                         required/>
                      {errors.number && <p className='text-danger'>Дугаар зөв оруулна уу</p>}
                      </div>
@@ -105,8 +109,9 @@ function Profile() {
                           className="form-control"
                           placeholder="password"
                           name="password"
+                          value = {password}
                           type={passwordShown ? "text" : "password"}
-                          {...register('password',{ required: true })}
+                          {...register('password',{ onChange : (e) => setUser4(e.target.value) })}
                         />
                        {errors.password && <p className='text-danger'>Password зөв оруулна уу</p>}
                         
@@ -121,7 +126,8 @@ function Profile() {
                         className="form-control" 
                         type="email" 
                         placeholder="Email оруулна уу" 
-                        {...register('email',{ required: true })}
+                        value = {email}
+                        {...register('email',{ onChange : (e) => setUser5(e.target.value) })}
                      /> 
                      {errors.email && <p className='text-danger'> email зөв оруулна уу</p>}
                      </div>

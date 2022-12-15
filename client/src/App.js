@@ -1,5 +1,5 @@
 
-import React , {useState} from "react";
+import React , {useState , useMemo} from "react";
 import './app.css'
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import Home from "./router/home";
@@ -16,7 +16,7 @@ import { ToastContainer } from "react-toastify";
 import Zahialga from "./router/User/Zahialga";
 import Zhiih from "./router/User/Zhiih";
 import Huwaari from "./router/User/Huwaari";
-import { UserContext } from "./router/userContext";
+import { UserContext  } from "./router/userContext";
 import Huvaari from "./router/Teacher/Huvaari";
 import AddSchedule from "./router/Teacher/AddSchedule";
 import Teacher from "./router/Teacher";
@@ -29,6 +29,7 @@ import AddTeacher from "./router/Admin/AddTeacher";
 
 function App() {
   const [user, setUser] = useState();
+  const ProviderValue = useMemo(() => ({user , setUser}), [user , setUser]);
   return (
     
     <div style={{height:"100vh"}} >
@@ -49,7 +50,7 @@ function App() {
         <Route path="/Readmore" element={<Read/>}/>
         <Route path="/User/profile" element={<Profile />}/>
         <Route path="/User/zahialga" element={<Zahialga />}/>
-        <Route path="/zahialga/zahialga_hiih" element={<Zhiih />}/>
+        <Route path="User/zahialga/zahialga_hiih" element={<Zhiih />}/>
         <Route path="/User/huwaari" element={<Huwaari />}/>
         <Route path="/teacher/teacherhuvaari" element={<Huvaari />}/>
         <Route path="/teacher/teacherhuvaari/huvaarinemeh" element={<AddSchedule />}/>

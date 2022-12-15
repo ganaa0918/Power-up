@@ -8,7 +8,8 @@ function Register() {
   const [ username , setUName ] = useState('');
   const [ Fname , setFName ] = useState('');
   const [ Phone , setPhone ] = useState('');
-  const [ Email , setEmail ] = useState('');
+  const [ email , setEmail ] = useState('');
+  const [ huis , sethuis ] = useState('');
   const [ repassword , setrePass ] = useState(0);
   const [password , setPass ] = useState(0);
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ function Register() {
     {
       method: 'post' ,
       headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify({ username, Fname ,Phone , password,repassword , type})
+      body: JSON.stringify({ username, Fname ,Phone , email, password,repassword ,huis, type})
       
     }
     ).then(data => data.json()).then(data => {
@@ -53,7 +54,7 @@ function Register() {
                      </div>
                      <div className='mt-3 form-group'>
                      <label>Email</label>
-                     <input className="form-control" type="text" placeholder="Утасны дугаару"value = { Email } onChange = {e => setEmail(e.target.value)} />
+                     <input className="form-control" type="text" placeholder="Утасны дугаару"value = { email } onChange = {e => setEmail(e.target.value)} />
                      </div>
                      <div className='mt-3 form-group'>
                      <label>Password</label>
@@ -64,17 +65,14 @@ function Register() {
                      <input className="form-control" type="password" placeholder="Та password дахин хийнэ үү"value = { repassword } onChange = {e => setrePass(e.target.value)} autoComplete='on'/>
                      </div>
                      <div className='mt-3 form-group'>
-                     <input type="radio" className="Purple" name="colors" value="Yellow"></input>
+                     <input type="radio" className="Purple" name="colors" value={huis} onClick={ e => sethuis(e.target.value) }></input>
                      <label className='radio ms-2'> Эр </label>
                      </div>
                      <div className='mt-3 form-group'>
-                     <input type="radio" className="Purple" name="colors" value="Yellow"></input>
+                     <input type="radio" className="Purple" name="colors" value={huis} onClick={ e => sethuis(e.target.value)}></input>
                      <label className='radio ms-2'> Эм </label>
                      </div>
-                     <div className='mt-3 form-group'>
-                     <input type="checkbox" className="Purple" name="colors" value="Yellow"></input>
-                     <label className='radio ms-2'> Remember me </label>
-                     </div>
+                    
                      <div className='d-flex justify-between mt-3'>
                         <button className='btn' style={{backgroundColor: "#7A5CFA", color: "white"}}>Cancel</button>
                         <button className='btn'  style={{backgroundColor: "#7A5CFA", color: "white"}} onClick = { handleClick}>Submit</button>
